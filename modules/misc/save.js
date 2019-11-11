@@ -11,7 +11,7 @@ module.exports = async ({ models }, ...docs) => {
 
         //Get doc info
         const model = doc.constructor.modelName;
-        const id = doc._id;
+        const id = model === "stats" ? JSON.parse(JSON.stringify(doc._id)) : doc._id;
         const docObject = doc.toObject();
         const modifiedPaths = doc.modifiedPaths().filter(mp => (!mp.includes(".")) && (!docObject.hasOwnProperty(mp)));
 
