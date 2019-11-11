@@ -1,0 +1,19 @@
+{
+  "name": "ozzolum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "APixel Visuals",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "directory-tree": "^2.2.4",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.7.9",
+    "syntax-error": "^1.4.0"
+  }
+}
