@@ -5,5 +5,11 @@ module.exports = [
         inputs: ["ping", "pong"],
         type: "basic",
         usage: "ping"
+    },
+    {
+        file: "eval",
+        name: "Eval",
+        ownerOnly: true,
+        inputs: ["eval"]
     }
 ];
