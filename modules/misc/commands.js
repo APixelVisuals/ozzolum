@@ -11,5 +11,11 @@ module.exports = [
         name: "Eval",
         ownerOnly: true,
         inputs: ["eval"]
+    },
+    {
+        file: "restart",
+        name: "Restart",
+        ownerOnly: true,
+        inputs: ["restart"]
     }
 ];
