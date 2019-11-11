@@ -16,7 +16,8 @@ const _ = {
     modules,
     util: modules.misc,
     models: loadModels(),
-    cooldowns: new Map()
+    cooldowns: new Map(),
+    stats: {}
 };
 
 _._ = _;
@@ -64,3 +65,22 @@ client.on("guildMemberAdd", member => _.modules.memberJoin.main(_, member));
 
 //Login
 client.login(process.env.TOKEN);
+
+//Stats
+setInterval(async () => {
+
+    const date = new Date();
+    const stats = await _.models.stats.findByIdAndUpdate({ year: date.getFullYear(), month: date.getMonth() + 1 }, {}, { upsert: true, setDefaultsOnInsert: true, new: true });
+
+    for (let s in _.stats) {
+
+        if (!stats.stats.find(ss => ss.name === s)) stats.stats.push({ name: s, count: 0 });
+
+        const stat = stats.stats.find(ss => ss.name === s);
+        stat.count = stat.count + _.stats[s];
+    }
+
+    _.stats = {};
+
+    await _.util.save(_, stats);
+}, 60000);
