@@ -1,0 +1,1 @@
+module.exports = async promise => new Promise(resolve => promise.then(resolve).catch(() => resolve(null)));
