@@ -11,12 +11,13 @@ const loadModels = require("./models/load");
 console.log(chalk.magenta("Building Objects..."));
 
 const modules = loadModules();
-const _ = Object.assign({
+const _ = {
     client,
     modules,
+    util: modules.misc,
     models: loadModels(),
     cooldowns: new Map()
-}, modules.misc);
+};
 
 _._ = _;
 
@@ -56,10 +57,10 @@ client.on("ready", async () => {
 });
 
 //Message
-client.on("message", message => client.modules.message(client, message));
+client.on("message", message => client.modules.message(_, message));
 
 //Member join
-client.on("guildMemberAdd", member => client.modules.memberJoin.main(client, member));
+client.on("guildMemberAdd", member => client.modules.memberJoin.main(_, member));
 
 //Login
 client.login(process.env.TOKEN);
