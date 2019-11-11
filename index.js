@@ -15,6 +15,7 @@ const _ = {
     client,
     modules,
     util: modules.misc,
+    classes: modules.classes,
     models: loadModels(),
     cooldowns: new Map(),
     stats: {}

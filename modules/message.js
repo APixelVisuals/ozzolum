@@ -11,17 +11,16 @@ module.exports = async ({ models, modules, util, _ }, message) => {
 
     //Match Command
     const simplifiedMessage = message.content.toLowerCase().replace(/\s+/g, "");
-    let command = util.commands
+    const command = util.commands
         .find(c => c.inputs
             .some(i => (
                 simplifiedMessage === `${c.ownerOnly ? "o#" : "o!"}${i}` ||
                 message.content.toLowerCase().startsWith(`${c.ownerOnly ? "o#" : "o!"}${i} `)
             ))
         );
-    command = command && modules[command.file];
 
-    if (command) command(_, message);
-
-    //Save docs
-    await util.save(_, message.author.data);
+    if (command) {
+        if (command.basic) modules[command.file](_, message);
+        else util.command(_, message, modules[command.file]);
+    }
 };

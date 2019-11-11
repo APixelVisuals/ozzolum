@@ -4,18 +4,21 @@ module.exports = [
         name: "Ping",
         inputs: ["ping", "pong"],
         type: "basic",
-        usage: "ping"
+        usage: "ping",
+        basic: true
     },
     {
         file: "eval",
         name: "Eval",
         ownerOnly: true,
-        inputs: ["eval"]
+        inputs: ["eval"],
+        basic: true
     },
     {
         file: "restart",
         name: "Restart",
         ownerOnly: true,
-        inputs: ["restart"]
+        inputs: ["restart"],
+        basic: true
     }
 ];
