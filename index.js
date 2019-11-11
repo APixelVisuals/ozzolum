@@ -57,10 +57,10 @@ client.on("ready", async () => {
 });
 
 //Message
-client.on("message", message => client.modules.message(_, message));
+client.on("message", message => _.modules.message(_, message));
 
 //Member join
-client.on("guildMemberAdd", member => client.modules.memberJoin.main(_, member));
+client.on("guildMemberAdd", member => _.modules.memberJoin.main(_, member));
 
 //Login
 client.login(process.env.TOKEN);
