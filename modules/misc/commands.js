@@ -11,8 +11,7 @@ module.exports = [
         file: "eval",
         name: "Eval",
         ownerOnly: true,
-        inputs: ["eval"],
-        basic: true
+        inputs: ["eval"]
     },
     {
         file: "restart",
