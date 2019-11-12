@@ -26,6 +26,7 @@ const _ = {
     //Other
     cooldowns: new Map(),
     stats: {},
+    idGenerationIncrement: 0,
     nextUploadChannel: 0
 };
 
