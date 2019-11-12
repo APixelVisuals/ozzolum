@@ -17,6 +17,7 @@ const _ = {
     util: modules.misc,
     classes: modules.classes,
     models: loadModels(),
+    Discord,
     cooldowns: new Map(),
     stats: {}
 };
