@@ -56,6 +56,9 @@ client.on("ready", async () => {
     client.apixel = client.users.get("196795781410324480");
     client.realmOfOzzolum = client.guilds.get("643180606615715870");
     client.changeLog = client.channels.get("643194322807685140");
+
+    client.ozzolumEmojis = {};
+    client.realmOfOzzolum.emojis.array().forEach(e => client.ozzolumEmojis[e.name] = e);
 });
 
 //Message
