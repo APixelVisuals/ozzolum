@@ -12,12 +12,18 @@ console.log(chalk.magenta("Building Objects..."));
 
 const modules = loadModules();
 const _ = {
+
+    //Main
     client,
     modules,
     util: modules.misc,
     classes: modules.classes,
     models: loadModels(),
+
+    //Modules
     Discord,
+
+    //Other
     cooldowns: new Map(),
     stats: {}
 };
