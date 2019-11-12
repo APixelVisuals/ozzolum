@@ -25,7 +25,8 @@ const _ = {
 
     //Other
     cooldowns: new Map(),
-    stats: {}
+    stats: {},
+    nextUploadChannel: 0
 };
 
 _._ = _;
@@ -66,6 +67,9 @@ client.on("ready", async () => {
 
     client.ozzolumEmojis = {};
     client.realmOfOzzolum.emojis.array().forEach(e => client.ozzolumEmojis[e.name] = e);
+
+    client.cheapImageHosting = client.guilds.get("643870259928891418");
+    client.uploadChannels = client.cheapImageHosting.channels.array();
 });
 
 //Message
