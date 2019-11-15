@@ -9,11 +9,15 @@
   "author": "APixel Visuals",
   "license": "ISC",
   "dependencies": {
+    "buffer-image-size": "^0.6.4",
     "chalk": "^3.0.0",
     "directory-tree": "^2.2.4",
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
     "mongoose": "^5.7.9",
-    "syntax-error": "^1.4.0"
+    "node-fetch": "^2.6.0",
+    "sharp": "^0.23.2",
+    "syntax-error": "^1.4.0",
+    "text2png": "^2.3.0"
   }
 }
