@@ -34,7 +34,7 @@ module.exports = class Player {
 
         //Parse
         this.data.ozzolites = this.ozzolites;
-        this.data.inv = this.inv.getItems();
+        this.data.inv = this.inv.items;
         this.data.stats = this.stats;
 
         //Return

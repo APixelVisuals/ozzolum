@@ -44,8 +44,4 @@ module.exports = class Inventory {
         if (item.amount <= 0) this.items.splice(this.items.indexOf(item), 1);
     }
 
-    getItems() {
-        return this.items;
-    }
-
 };
