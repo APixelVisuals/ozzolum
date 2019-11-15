@@ -23,6 +23,9 @@ const _ = {
     //Modules
     Discord,
 
+    //Constants
+    loadingImage: "https://gifimage.net/wp-content/uploads/2017/08/loading-gif-transparent-25.gif",
+
     //Other
     cooldowns: new Map(),
     stats: {},
