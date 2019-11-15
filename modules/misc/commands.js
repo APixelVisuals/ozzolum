@@ -8,6 +8,14 @@ module.exports = [
         basic: true
     },
     {
+        file: "start",
+        name: "Start",
+        inputs: ["start"],
+        type: "basic",
+        usage: "start",
+        basic: true
+    },
+    {
         file: "eval",
         name: "Eval",
         ownerOnly: true,
