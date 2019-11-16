@@ -1,4 +1,4 @@
-module.exports = async ({ models, Discord, loadingImage, imageGenerators, util, _ }, message) => {
+module.exports = async ({ imageGenerators, util, models, Discord, loadingImage, _ }, message) => {
 
     //Cooldown
     if (!await util.cooldown(_, message, 5000)) return;
