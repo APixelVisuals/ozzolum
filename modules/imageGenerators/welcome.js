@@ -1,7 +1,7 @@
 module.exports = async ({ classes, _ }, user) => {
 
     //Create image
-    const image = new classes.Image(_, "assets/welcomeImage/background.png");
+    const image = new classes.Image(_, "assets/welcomeBG.png");
 
     //Add avatar
     await image.compositeAvatar(user, 375, 325);
