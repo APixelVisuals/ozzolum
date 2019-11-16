@@ -4,11 +4,11 @@ module.exports = async ({ models, Discord, loadingImage, util, _ }, message) => 
     if (!await util.cooldown(_, message, 5000)) return;
 
     //Already started
-    const userData = await models.users.findById(message.author.id);
+    const userData = await models.players.findById(message.author.id);
     if (userData) return message.channel.send(`:x:  **|  ${message.author}, You've already started a game!**`);
 
     //Add to DB
-    await models.users.create({
+    await models.players.create({
         _id: message.author.id
     });
 
