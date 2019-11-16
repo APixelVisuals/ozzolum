@@ -16,6 +16,7 @@ const _ = {
     //Main
     client,
     modules,
+    imageGenerators: modules.imageGenerators,
     util: modules.misc,
     classes: modules.classes,
     models: loadModels(),

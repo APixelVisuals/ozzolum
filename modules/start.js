@@ -1,4 +1,4 @@
-module.exports = async ({ models, Discord, loadingImage, util, _ }, message) => {
+module.exports = async ({ models, Discord, loadingImage, imageGenerators, util, _ }, message) => {
 
     //Cooldown
     if (!await util.cooldown(_, message, 5000)) return;
@@ -23,7 +23,7 @@ module.exports = async ({ models, Discord, loadingImage, util, _ }, message) => 
 
     //Send
     const m = await message.channel.send(embed);
-    m.edit(embed.setImage(await util.welcomeImage(_, message.author)));
+    m.edit(embed.setImage(await imageGenerators.welcome(_, message.author)));
 
     //Stats
     await util.stats(_, "Games Started");
