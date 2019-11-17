@@ -4,7 +4,13 @@ module.exports = async ({ classes, _ }, user) => {
     const image = new classes.Image(_, "assets/welcomeBG.png");
 
     //Add avatar
-    await image.compositeAvatar(user, 375, 325);
+    await image.compositeAvatar({
+        user,
+        width: 250,
+        height: 250,
+        x: 375,
+        y: 325
+    });
 
     //Add username
     const username = image.text({

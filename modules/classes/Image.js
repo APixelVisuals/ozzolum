@@ -13,7 +13,7 @@ module.exports = class Image {
         this.compositions = [];
     }
 
-    async compositeAvatar(user, x, y) {
+    async compositeAvatar({ user, width, height, x, y }) {
 
         //Fetch avatar
         const avatar = await (await fetch(`${user.displayAvatarURL}?size=256`)).buffer();
@@ -22,7 +22,7 @@ module.exports = class Image {
         let image = sharp(avatar);
 
         //Resize
-        image.resize(250, 250);
+        image.resize(width, height);
 
         //Mask
         image.composite([{
