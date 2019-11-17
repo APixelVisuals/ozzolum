@@ -44,7 +44,7 @@ module.exports = class Image {
     text({ text, font, fontSize, color, x, y }) {
 
         //Parse text
-        text = text.replace(/[^A-Za-z0-9()[\]{}<>\-_!@#$%^&*=+:;.,?/\\|~'"` ]/g, "");
+        text = text.toString().replace(/[^A-Za-z0-9()[\]{}<>\-_!@#$%^&*=+:;.,?/\\|~'"` ]/g, "");
 
         //Generate font name
         const fontName = font.replace(/\//g, "").split(".")[0];
