@@ -16,6 +16,13 @@ module.exports = [
         basic: true
     },
     {
+        file: "inventory",
+        name: "Inventory",
+        inputs: ["inventory", "inv", "items"],
+        type: "basic",
+        usage: "inv [Search Query] [Page] [User]",
+    },
+    {
         file: "eval",
         name: "Eval",
         ownerOnly: true,

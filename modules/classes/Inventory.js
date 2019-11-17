@@ -45,4 +45,32 @@ module.exports = class Inventory {
         if (item.amount <= 0) this.items.splice(this.items.indexOf(item), 1);
     }
 
+    async toImage(user, page, searchQuery) {
+
+        //Get utils
+        const { imageGenerators, util, _ } = this._;
+
+        //Get items
+        const startingItem = 10 * (page - 1);
+        let items = [...this.items];
+
+        if (searchQuery) items = items.map(i => {
+
+            const nameTags = i.name.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
+            const itemTags = [...new Set(util.items[i.name].concat(nameTags))].filter(t => t);
+
+            const queryTags = [...new Set(searchQuery.toLowerCase().replace(/[^a-z ]/g, "").split(" "))].filter(t => t);
+
+            const matches = itemTags.filter(t => queryTags.some(tt => t.startsWith(tt) || t.endsWith(tt))).length;
+
+            return matches ? { item: i, matches } : null;
+        }).filter(i => i).sort((a, b) => b.matches - a.matches).map(i => i.item);
+        else items = items.sort((a, b) => a.name < b.name ? -1 : 1);
+
+        items = items.slice(startingItem, startingItem + 10);
+
+        //Generate image
+        return await imageGenerators.inventory(_, user, items);
+    }
+
 };
