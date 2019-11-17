@@ -8,7 +8,7 @@ module.exports = async ({ classes, models, util, _ }, message, command, ownerOnl
     }
 
     //Create player
-    message.author.player = new classes.Player(userData);
+    message.author.player = new classes.Player(_, userData);
 
     //Run command
     await command(_, message);

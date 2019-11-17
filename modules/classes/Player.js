@@ -2,9 +2,16 @@ const PlayerInventory = require("./PlayerInventory");
 
 module.exports = class Player {
 
-    constructor(data) {
+    constructor(_, data) {
+
+        //No data
+        if (!data) {
+            this.noPlayer = true;
+            return;
+        }
 
         //Set data
+        this._ = _;
         this.data = data;
 
         //Set properties
