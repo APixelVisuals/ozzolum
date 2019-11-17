@@ -58,13 +58,13 @@ module.exports = class Image {
         });
 
         //Composite
-        this.composite(image, x, y);
+        if (x && y) this.composite(image, x, y);
 
         //Get dimensions
         const dimensions = bufferImageSize(image);
 
         //Return
-        return { width: dimensions.width, height: dimensions.height };
+        return { image, width: dimensions.width, height: dimensions.height };
     }
 
     composite(image, x, y) {
