@@ -67,8 +67,19 @@ module.exports = class Image {
         return { image, width: dimensions.width, height: dimensions.height };
     }
 
-    composite(image, x, y) {
-        this.compositions.push({
+    composite(image, x, y, behind) {
+
+        //Parse image
+        if ((image instanceof Object) && (!(image instanceof Buffer))) {
+            image.channels = 4;
+            image = { create: image };
+        }
+
+        //Parse behind
+        if (!behind) behind = 0;
+
+        //Add to compositions
+        this.compositions.splice(this.compositions.length - 1 - behind, 0, {
             input: image,
             left: x,
             top: y
