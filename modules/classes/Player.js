@@ -16,7 +16,7 @@ module.exports = class Player {
 
         //Set properties
         this.ozzolites = this.data.ozzolites;
-        this.inv = new PlayerInventory(this.data.inv);
+        this.inv = new PlayerInventory(_, this.data.inv);
         this.stats = this.data.stats;
     }
 

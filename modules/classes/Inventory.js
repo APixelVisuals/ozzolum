@@ -1,6 +1,7 @@
 module.exports = class Inventory {
 
-    constructor(inv) {
+    constructor(_, inv) {
+        this._ = _;
         this.items = inv;
     }
 
