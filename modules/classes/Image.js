@@ -25,8 +25,12 @@ module.exports = class Image {
         image.resize(width, height);
 
         //Mask
+        const mask = await sharp("assets/avatarMask.png")
+            .resize(width, height)
+            .toBuffer();
+
         image.composite([{
-            input: "assets/avatarMask.png",
+            input: mask,
             blend: "dest-in"
         }]);
 
