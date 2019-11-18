@@ -19,6 +19,31 @@ module.exports = class Inventory {
         return true;
     }
 
+    getItem(searchQuery, all) {
+
+        //Get utils
+        const { util } = this._;
+
+        //Get items
+        let items = [...this.items];
+
+        items = items.map(i => {
+
+            const nameTags = i.name.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
+            const typeTags = util.items[i.name].type.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
+            const itemTags = [...new Set([...util.items[i.name].tags, ...nameTags, ...typeTags])].filter(t => t);
+
+            const queryTags = [...new Set(searchQuery.toLowerCase().replace(/[^a-z ]/g, "").split(" "))].filter(t => t);
+
+            const matches = itemTags.filter(t => queryTags.some(tt => t.startsWith(tt) || t.endsWith(tt))).length;
+
+            return matches ? { item: i, matches } : null;
+        }).filter(i => i).sort((a, b) => b.matches - a.matches).map(i => i.item);
+
+        //Return
+        return all ? items : items[0];
+    }
+
     addItems(name, amount) {
 
         //No amount
@@ -54,18 +79,7 @@ module.exports = class Inventory {
         const startingItem = 10 * (page - 1);
         let items = [...this.items];
 
-        if (searchQuery) items = items.map(i => {
-
-            const nameTags = i.name.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
-            const typeTags = util.items[i.name].type.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
-            const itemTags = [...new Set([...util.items[i.name].tags, ...nameTags, ...typeTags])].filter(t => t);
-
-            const queryTags = [...new Set(searchQuery.toLowerCase().replace(/[^a-z ]/g, "").split(" "))].filter(t => t);
-
-            const matches = itemTags.filter(t => queryTags.some(tt => t.startsWith(tt) || t.endsWith(tt))).length;
-
-            return matches ? { item: i, matches } : null;
-        }).filter(i => i).sort((a, b) => b.matches - a.matches).map(i => i.item);
+        if (searchQuery) items = this.getItem(searchQuery, true);
         else items = items.sort((a, b) => a.name < b.name ? -1 : 1);
 
         items = items.slice(startingItem, startingItem + 10);
