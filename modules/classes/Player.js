@@ -17,6 +17,11 @@ module.exports = class Player {
         //Set properties
         this.ozzolites = this.data.ozzolites;
         this.inv = new PlayerInventory(_, this.data.inv);
+        this.axe = this.data.axe;
+        this.pickaxe = this.data.pickaxe;
+        this.shovel = this.data.shovel;
+        this.fishingRod = this.data.fishingRod;
+        this.weapon = this.data.weapon;
         this.stats = this.data.stats;
     }
 
@@ -42,6 +47,11 @@ module.exports = class Player {
         //Parse
         this.data.ozzolites = this.ozzolites;
         this.data.inv = this.inv.items;
+        this.data.axe = this.axe;
+        this.data.pickaxe = this.pickaxe;
+        this.data.shovel = this.shovel;
+        this.data.fishingRod = this.fishingRod;
+        this.data.weapon = this.weapon;
         this.data.stats = this.stats;
 
         //Return
