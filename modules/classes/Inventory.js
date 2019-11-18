@@ -43,7 +43,7 @@ module.exports = class Inventory {
         }).filter(i => i).sort((a, b) => b.matches - a.matches).map(i => i.item);
 
         //Return
-        return all ? items : (items[0] && items[0].name);
+        return all ? items : (items[0] && util.items.find(i => i.name === items[0].name));
     }
 
     addItems(name, amount) {
