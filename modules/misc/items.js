@@ -2,21 +2,25 @@ module.exports = [
     {
         name: "Stone Hatchet",
         type: "Axe",
-        tags: []
+        tags: [],
+        equipType: "axe"
     },
     {
         name: "Stone Pickaxe",
         type: "Pickaxe",
-        tags: []
+        tags: [],
+        equipType: "pickaxe"
     },
     {
         name: "Stone Shovel",
         type: "Shovel",
-        tags: []
+        tags: [],
+        equipType: "shovel"
     },
     {
         name: "Stone Dagger",
         type: "Sword",
-        tags: []
+        tags: [],
+        equipType: "sword"
     }
 ];
