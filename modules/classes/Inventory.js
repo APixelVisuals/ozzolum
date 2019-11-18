@@ -48,6 +48,9 @@ module.exports = class Inventory {
 
     addItem(name, amount) {
 
+        //No amount
+        if (amount === undefined) amount = 1;
+
         //No params
         if ((!name) || (!amount)) return;
 
@@ -59,6 +62,9 @@ module.exports = class Inventory {
     }
 
     removeItem(name, amount) {
+
+        //No amount
+        if (amount === undefined) amount = 1;
 
         //No params
         if ((!name) || (!amount)) return;
