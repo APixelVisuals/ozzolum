@@ -73,7 +73,7 @@ module.exports = class Inventory {
     async toImage(user, page, searchQuery) {
 
         //Get utils
-        const { imageGenerators, util, _ } = this._;
+        const { imageGenerators, _ } = this._;
 
         //Get items
         const startingItem = 10 * (page - 1);
