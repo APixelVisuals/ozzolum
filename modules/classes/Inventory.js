@@ -48,8 +48,8 @@ module.exports = class Inventory {
 
     addItems(name, amount) {
 
-        //No amount
-        if (!amount) return;
+        //No params
+        if ((!name) || (!amount)) return;
 
         //Add items
         if (!this.items.find(i => i.name === name)) this.items.push({ name, amount: 0 });
@@ -60,8 +60,8 @@ module.exports = class Inventory {
 
     removeItems(name, amount) {
 
-        //No amount
-        if (!amount) return;
+        //No params
+        if ((!name) || (!amount)) return;
 
         //Remove items
         const item = this.items.find(i => i.name === name);
