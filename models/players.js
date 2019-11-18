@@ -13,7 +13,7 @@ module.exports = {
     pickaxe: String,
     shovel: String,
     fishingRod: String,
-    sword: String,
+    weapon: String,
     stats: [{
         name: String,
         count: Number

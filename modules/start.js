@@ -13,7 +13,7 @@ module.exports = async ({ imageGenerators, util, models, Discord, loadingImage, 
         axe: "Stone Hatchet",
         pickaxe: "Stone Pickaxe",
         shovel: "Stone Shovel",
-        sword: "Stone Dagger"
+        weapon: "Stone Dagger"
     });
 
     //Embed
