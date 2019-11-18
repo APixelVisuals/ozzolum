@@ -23,6 +23,20 @@ module.exports = [
         usage: "inv [Search Query] [Page] [User]",
     },
     {
+        file: "equip",
+        name: "Equip",
+        inputs: ["equip", "use"],
+        type: "basic",
+        usage: "equip <Item>",
+    },
+    {
+        file: "unequip",
+        name: "Unequip",
+        inputs: ["unequip", "unuse"],
+        type: "basic",
+        usage: "unequip <Type>",
+    },
+    {
         file: "eval",
         name: "Eval",
         ownerOnly: true,
