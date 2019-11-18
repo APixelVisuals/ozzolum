@@ -9,6 +9,11 @@ module.exports = {
         name: String,
         amount: Number
     }],
+    axe: String,
+    pickaxe: String,
+    shovel: String,
+    fishingRod: String,
+    sword: String,
     stats: [{
         name: String,
         count: Number

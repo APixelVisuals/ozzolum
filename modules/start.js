@@ -9,7 +9,11 @@ module.exports = async ({ imageGenerators, util, models, Discord, loadingImage, 
 
     //Add to DB
     await models.players.create({
-        _id: message.author.id
+        _id: message.author.id,
+        axe: "Stone Hatchet",
+        pickaxe: "Stone Pickaxe",
+        shovel: "Stone Shovel",
+        sword: "Stone Dagger"
     });
 
     //Embed
