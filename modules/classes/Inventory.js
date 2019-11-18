@@ -57,7 +57,8 @@ module.exports = class Inventory {
         if (searchQuery) items = items.map(i => {
 
             const nameTags = i.name.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
-            const itemTags = [...new Set(util.items[i.name].concat(nameTags))].filter(t => t);
+            const typeTags = util.items[i.name].type.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
+            const itemTags = [...new Set([...util.items[i.name].tags, ...nameTags, ...typeTags])].filter(t => t);
 
             const queryTags = [...new Set(searchQuery.toLowerCase().replace(/[^a-z ]/g, "").split(" "))].filter(t => t);
 
