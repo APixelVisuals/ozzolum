@@ -46,24 +46,24 @@ module.exports = class Inventory {
         return all ? items : (items[0] && util.items.find(i => i.name === items[0].name));
     }
 
-    addItems(name, amount) {
+    addItem(name, amount) {
 
         //No params
         if ((!name) || (!amount)) return;
 
-        //Add items
+        //Add item
         if (!this.items.find(i => i.name === name)) this.items.push({ name, amount: 0 });
 
         const item = this.items.find(i => i.name === name);
         item.amount = item.amount + amount;
     }
 
-    removeItems(name, amount) {
+    removeItem(name, amount) {
 
         //No params
         if ((!name) || (!amount)) return;
 
-        //Remove items
+        //Remove item
         const item = this.items.find(i => i.name === name);
         if (!item) return;
 
