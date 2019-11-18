@@ -1,18 +1,22 @@
-module.exports = {
-    "Stone Hatchet": {
+module.exports = [
+    {
+        name: "Stone Hatchet",
         type: "Axe",
         tags: []
     },
-    "Stone Pickaxe": {
+    {
+        name: "Stone Pickaxe",
         type: "Pickaxe",
         tags: []
     },
-    "Stone Shovel": {
+    {
+        name: "Stone Shovel",
         type: "Shovel",
         tags: []
     },
-    "Stone Dagger": {
+    {
+        name: "Stone Dagger",
         type: "Sword",
         tags: []
     }
-};
+];

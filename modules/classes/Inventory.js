@@ -29,9 +29,11 @@ module.exports = class Inventory {
 
         items = items.map(i => {
 
+            const item = util.items.find(ii => ii.name === i.name);
+
             const nameTags = i.name.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
-            const typeTags = util.items[i.name].type.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
-            const itemTags = [...new Set([...util.items[i.name].tags, ...nameTags, ...typeTags])].filter(t => t);
+            const typeTags = item.type.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
+            const itemTags = [...new Set([...item.tags, ...nameTags, ...typeTags])].filter(t => t);
 
             const queryTags = [...new Set(searchQuery.toLowerCase().replace(/[^a-z ]/g, "").split(" "))].filter(t => t);
 
