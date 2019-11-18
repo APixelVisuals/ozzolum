@@ -19,8 +19,8 @@ module.exports = [
     },
     {
         name: "Stone Dagger",
-        type: "Sword",
+        type: "Weapon",
         tags: [],
-        equipType: "sword"
+        equipType: "weapon"
     }
 ];
