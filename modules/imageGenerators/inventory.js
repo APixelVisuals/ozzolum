@@ -45,7 +45,7 @@ module.exports = async ({ classes, _ }, user, items) => {
         if (index > 4) y = y + 275;
 
         //Composite
-        image.composite(`assets/items/${i.name}.png`, x, y);
+        image.composite(`assets/items/${i.name}.png`, x - 48, y);
 
         //Add amount
         const amount = image.text({
