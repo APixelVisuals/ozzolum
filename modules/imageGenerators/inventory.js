@@ -17,7 +17,7 @@ module.exports = async ({ classes, _ }, user, items) => {
         text: user.username,
         font: "Roboto/Black.ttf",
         fontSize: 85,
-        color: "#8b653b",
+        color: "#7b4b35",
         x: 365,
         y: 63
     });
@@ -27,7 +27,7 @@ module.exports = async ({ classes, _ }, user, items) => {
         text: `#${user.discriminator}`,
         font: "Roboto/Black.ttf",
         fontSize: 35,
-        color: "#8b653b",
+        color: "#7b4b35",
         x: 365 + username.width + 5,
         y: 103
     });
@@ -64,13 +64,13 @@ module.exports = async ({ classes, _ }, user, items) => {
         image.composite({
             width: amount.width + 36,
             height: amount.height + 36,
-            background: "#8b653b"
+            background: "#7b4b35"
         }, amountX - 18, amountY - 18, 1);
 
         image.composite({
             width: amount.width + 20,
             height: amount.height + 20,
-            background: "#9b7244"
+            background: "#9a613c"
         }, amountX - 10, amountY - 10, 1);
     });
 
