@@ -15,13 +15,16 @@ module.exports = class Player {
         this.data = data;
 
         //Set properties
-        this.ozzolites = this.data.ozzolites;
         this.inv = new PlayerInventory(_, this.data.inv);
         this.axe = this.data.axe;
         this.pickaxe = this.data.pickaxe;
         this.shovel = this.data.shovel;
         this.fishingRod = this.data.fishingRod;
         this.weapon = this.data.weapon;
+        this.health = this.data.health;
+        this.maxHealth = this.data.maxHealth;
+        this.battleXP = { ...this.data.battleXP };
+        this.ozzolites = this.data.ozzolites;
         this.stats = this.data.stats;
     }
 
@@ -45,13 +48,16 @@ module.exports = class Player {
     getData() {
 
         //Parse
-        this.data.ozzolites = this.ozzolites;
         this.data.inv = this.inv.items;
         this.data.axe = this.axe;
         this.data.pickaxe = this.pickaxe;
         this.data.shovel = this.shovel;
         this.data.fishingRod = this.fishingRod;
         this.data.weapon = this.weapon;
+        this.data.health = this.health;
+        this.data.maxHealth = this.maxHealth;
+        this.data.battleXP = { ...this.battleXP };
+        this.data.ozzolites = this.ozzolites;
         this.data.stats = this.stats;
 
         //Return
