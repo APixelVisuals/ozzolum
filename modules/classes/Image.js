@@ -71,8 +71,9 @@ module.exports = class Image {
 
         //Parse image
         if ((image instanceof Object) && (!(image instanceof Buffer))) {
-            image.channels = 4;
-            image = { create: image };
+            image.width = Math.round(image.width);
+            image.height = Math.round(image.height);
+            image = { create: { ...image, channels: 4 } };
         }
 
         //Parse behind
