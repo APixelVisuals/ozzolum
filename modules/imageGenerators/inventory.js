@@ -65,13 +65,13 @@ module.exports = async ({ classes, _ }, user, items) => {
             width: amount.width + 36,
             height: amount.height + 36,
             background: "#7b4b35"
-        }, amountX - 18, amountY - 18, 1);
+        }, amountX - 18, amountY - 18, { behind: 1 });
 
         image.composite({
             width: amount.width + 20,
             height: amount.height + 20,
             background: "#9a613c"
-        }, amountX - 10, amountY - 10, 1);
+        }, amountX - 10, amountY - 10, { behind: 1 });
     });
 
     //Render + return

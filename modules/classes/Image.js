@@ -67,7 +67,7 @@ module.exports = class Image {
         return { image, width: dimensions.width, height: dimensions.height };
     }
 
-    composite(image, x, y, behind) {
+    composite(image, x, y, { behind }) {
 
         //Parse image
         if ((image instanceof Object) && (!(image instanceof Buffer))) {
