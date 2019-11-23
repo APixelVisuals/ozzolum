@@ -1,10 +1,6 @@
 module.exports = {
     //User ID
     _id: String,
-    ozzolites: {
-        type: Number,
-        default: 0
-    },
     inv: [{
         name: String,
         amount: Number
@@ -27,6 +23,10 @@ module.exports = {
             type: Number,
             default: 0
         }
+    },
+    ozzolites: {
+        type: Number,
+        default: 0
     },
     stats: [{
         name: String,
