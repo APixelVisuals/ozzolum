@@ -10,6 +10,14 @@ module.exports = {
     shovel: String,
     fishingRod: String,
     weapon: String,
+    health: {
+        type: Number,
+        default: 200
+    },
+    maxHealth: {
+        type: Number,
+        default: 200
+    },
     battleXP: {
         xp: {
             type: Number,
