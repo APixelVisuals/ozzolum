@@ -23,7 +23,7 @@ module.exports = class Player {
         this.weapon = this.data.weapon;
         this.health = this.data.health;
         this.maxHealth = this.data.maxHealth;
-        this.battleXP = { ...this.data.battleXP };
+        this.battleXP = { ...this.data.battleXP.toObject() };
         this.ozzolites = this.data.ozzolites;
         this.stats = this.data.stats;
     }
