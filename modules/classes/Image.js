@@ -25,7 +25,7 @@ module.exports = class Image {
         image.resize(width, height);
 
         //Mask
-        const mask = await sharp("assets/avatarMask.png")
+        const mask = await sharp("assets/circleMask.png")
             .resize(width, height)
             .toBuffer();
 
