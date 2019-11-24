@@ -23,7 +23,7 @@ module.exports = class Player {
         this.weapon = this.data.weapon;
         this.health = this.data.health;
         this.maxHealth = this.data.maxHealth;
-        this.battleXP = { ...this.data.battleXP.toObject() };
+        this.fightingXP = { ...this.data.fightingXP.toObject() };
         this.ozzolites = this.data.ozzolites;
         this.stats = this.data.stats;
     }
@@ -37,7 +37,7 @@ module.exports = class Player {
         return await imageGenerators.profile(_, user, {
             health: this.health,
             maxHealth: this.maxHealth,
-            battleXP: this.battleXP,
+            fightingXP: this.fightingXP,
             ozzolites: this.ozzolites
         });
     }
@@ -70,7 +70,7 @@ module.exports = class Player {
         this.data.weapon = this.weapon;
         this.data.health = this.health;
         this.data.maxHealth = this.maxHealth;
-        this.data.battleXP = { ...this.battleXP };
+        this.data.fightingXP = { ...this.fightingXP };
         this.data.ozzolites = this.ozzolites;
         this.data.stats = this.stats;
 

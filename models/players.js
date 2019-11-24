@@ -18,7 +18,7 @@ module.exports = {
         type: Number,
         default: 200
     },
-    battleXP: {
+    fightingXP: {
         xp: {
             type: Number,
             default: 0
