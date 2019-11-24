@@ -67,6 +67,16 @@ module.exports = class Image {
         return { image, width: dimensions.width, height: dimensions.height };
     }
 
+    async progressBar({ width, height, amount, maxAmount, color, x, y }) {
+
+        //Add progress bar
+        if (amount) this.composite(Buffer.from(
+            `<svg>
+                <rect width="${((amount / maxAmount) * width)}" height="${height}" rx="${height / 2}" ry="${height / 2}" fill="${color}" />
+            </svg>`
+        ), x, y);
+    }
+
     composite(image, x, y, behind) {
 
         //Parse image
