@@ -67,6 +67,16 @@ module.exports = class Image {
         return { image, width: dimensions.width, height: dimensions.height };
     }
 
+    circle({ diameter, color, x, y }) {
+
+        //Add circle
+        this.composite(Buffer.from(
+            `<svg>
+                <circle cx="${diameter / 2}" cy="${diameter / 2}" r="${diameter / 2}" fill="${color}" />
+            </svg>`
+        ), x, y);
+    }
+
     async progressBar({ width, height, amount, maxAmount, color, x, y }) {
 
         //Add progress bar
