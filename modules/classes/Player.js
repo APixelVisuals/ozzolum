@@ -16,19 +16,14 @@ module.exports = class Player {
 
         //Set properties
         this.inv = new PlayerInventory(_, this.data.inv);
-        this.axe = this.data.axe;
-        this.pickaxe = this.data.pickaxe;
-        this.shovel = this.data.shovel;
-        this.fishingRod = this.data.fishingRod;
-        this.weapon = this.data.weapon;
         this.health = this.data.health;
         this.maxHealth = this.data.maxHealth;
         this.unlocks = this.data.unlocks;
-        this.fightingXP = { ...this.data.fightingXP.toObject() };
-        this.choppingXP = { ...this.data.choppingXP.toObject() };
-        this.miningXP = { ...this.data.miningXP.toObject() };
-        this.diggingXP = { ...this.data.diggingXP.toObject() };
-        this.fishingXP = { ...this.data.fishingXP.toObject() };
+        this.fighting = { ...this.data.fighting.toObject() };
+        this.chopping = { ...this.data.chopping.toObject() };
+        this.mining = { ...this.data.mining.toObject() };
+        this.digging = { ...this.data.digging.toObject() };
+        this.fishing = { ...this.data.fishing.toObject() };
         this.ozzolites = this.data.ozzolites;
         this.stats = this.data.stats;
     }
@@ -76,19 +71,14 @@ module.exports = class Player {
 
         //Parse
         this.data.inv = this.inv.items;
-        this.data.axe = this.axe;
-        this.data.pickaxe = this.pickaxe;
-        this.data.shovel = this.shovel;
-        this.data.fishingRod = this.fishingRod;
-        this.data.weapon = this.weapon;
         this.data.health = this.health;
         this.data.maxHealth = this.maxHealth;
         this.data.unlocks = this.unlocks;
-        this.data.fightingXP = { ...this.fightingXP };
-        this.data.choppingXP = { ...this.choppingXP };
-        this.data.miningXP = { ...this.miningXP };
-        this.data.diggingXP = { ...this.diggingXP };
-        this.data.fishingXP = { ...this.fishingXP };
+        this.data.fighting = { ...this.fighting };
+        this.data.chopping = { ...this.chopping };
+        this.data.mining = { ...this.mining };
+        this.data.digging = { ...this.digging };
+        this.data.fishing = { ...this.fishing };
         this.data.ozzolites = this.ozzolites;
         this.data.stats = this.stats;
 

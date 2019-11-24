@@ -5,11 +5,6 @@ module.exports = {
         name: String,
         amount: Number
     }],
-    axe: String,
-    pickaxe: String,
-    shovel: String,
-    fishingRod: String,
-    weapon: String,
     health: {
         type: Number,
         default: 200
@@ -19,7 +14,8 @@ module.exports = {
         default: 200
     },
     unlocks: [String],
-    fightingXP: {
+    fighting: {
+        tool: String,
         xp: {
             type: Number,
             default: 0
@@ -33,7 +29,8 @@ module.exports = {
             default: 0
         }
     },
-    choppingXP: {
+    chopping: {
+        tool: String,
         xp: {
             type: Number,
             default: 0
@@ -47,7 +44,8 @@ module.exports = {
             default: 0
         }
     },
-    miningXP: {
+    mining: {
+        tool: String,
         xp: {
             type: Number,
             default: 0
@@ -61,7 +59,8 @@ module.exports = {
             default: 0
         }
     },
-    diggingXP: {
+    digging: {
+        tool: String,
         xp: {
             type: Number,
             default: 0
@@ -75,7 +74,8 @@ module.exports = {
             default: 0
         }
     },
-    fishingXP: {
+    fishing: {
+        tool: String,
         xp: {
             type: Number,
             default: 0

@@ -10,28 +10,28 @@ module.exports = async ({ client, util, _ }, message) => {
     if (!type) return message.channel.send(`:x:  **|  ${message.author}, What type of item would you like to unequip?**`);
 
     //Parse type
-    if (["axe", "hatchet"].includes(type)) type = "axe";
-    else if (["pickaxe", "pick"].includes(type)) type = "pickaxe";
-    else if (["shovel"].includes(type)) type = "shovel";
-    else if (["fishingrod", "fishingpole"].includes(type)) type = "fishingRod";
-    else if (["weapon", "sword"].includes(type)) type = "weapon";
+    if (["weapon", "sword"].includes(type)) type = "fighting";
+    else if (["axe", "hatchet"].includes(type)) type = "chopping";
+    else if (["pickaxe", "pick"].includes(type)) type = "mining";
+    else if (["shovel"].includes(type)) type = "digging";
+    else if (["fishingrod", "fishingpole"].includes(type)) type = "fishing";
     else return message.channel.send(`:x:  **|  ${message.author}, That item type doesn't exist!**`);
 
     //Not equipped
-    if (!message.author.player[type]) return message.channel.send(`:x:  **|  ${message.author}, You don't have ${{
-        axe: "an Axe",
-        pickaxe: "a Pickaxe",
-        shovel: "a Shovel",
-        fishingRod: "a Fishing Rod",
-        weapon: "a Weapon"
+    if (!message.author.player[type].tool) return message.channel.send(`:x:  **|  ${message.author}, You don't have ${{
+        fighting: "a Weapon",
+        chopping: "an Axe",
+        mining: "a Pickaxe",
+        digging: "a Shovel",
+        fishing: "a Fishing Rod"
     }[type]} equipped!**`);
 
     //Get item
-    const item = message.author.player[type];
+    const item = message.author.player[type].tool;
 
     //Unequip
     message.author.player.inv.addItem(item);
-    message.author.player[type] = undefined;
+    message.author.player[type].tool = undefined;
 
     //Send
     message.channel.send(`${client.ozzolumEmojis["checkmark"]}  **|  ${message.author}, You've unequipped the ${item}!**`);

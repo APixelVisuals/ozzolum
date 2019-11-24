@@ -10,10 +10,10 @@ module.exports = async ({ imageGenerators, util, models, Discord, loadingImage, 
     //Add to DB
     await models.players.create({
         _id: message.author.id,
-        axe: "Stone Hatchet",
-        pickaxe: "Stone Pickaxe",
-        shovel: "Stone Shovel",
-        weapon: "Stone Dagger"
+        fighting: { tool: "Stone Dagger" },
+        chopping: { tool: "Stone Hatchet" },
+        mining: { tool: "Stone Pickaxe" },
+        digging: { tool: "Stone Shovel" }
     });
 
     //Embed

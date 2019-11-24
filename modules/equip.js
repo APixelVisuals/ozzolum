@@ -17,9 +17,9 @@ module.exports = async ({ client, util, _ }, message) => {
     if (!item.equipType) return message.channel.send(`:x:  **|  ${message.author}, That item isn't equippable!**`);
 
     //Equip
-    message.author.player.inv.addItem(message.author.player[item.equipType]);
+    message.author.player.inv.addItem(message.author.player[item.equipType].tool);
     message.author.player.inv.removeItem(item.name);
-    message.author.player[item.equipType] = item.name;
+    message.author.player[item.equipType].tool = item.name;
 
     //Send
     message.channel.send(`${client.ozzolumEmojis["checkmark"]}  **|  ${message.author}, You've equipped a ${item.name}!**`);
