@@ -28,6 +28,20 @@ module.exports = class Player {
         this.stats = this.data.stats;
     }
 
+    async profileImage(user) {
+
+        //Get utils
+        const { imageGenerators, _ } = this._;
+
+        //Generate image
+        return await imageGenerators.profile(_, user, {
+            health: this.health,
+            maxHealth: this.maxHealth,
+            battleXP: this.battleXP,
+            ozzolites: this.ozzolites
+        });
+    }
+
     //Stats
     incrementStats(name, amount) {
 

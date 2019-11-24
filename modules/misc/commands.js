@@ -23,6 +23,13 @@ module.exports = [
         usage: "inv [Search Query] [Page] [User]",
     },
     {
+        file: "profile",
+        name: "Profile",
+        inputs: ["profile", "p"],
+        type: "basic",
+        usage: "profile [User]",
+    },
+    {
         file: "equip",
         name: "Equip",
         inputs: ["equip", "use"],
