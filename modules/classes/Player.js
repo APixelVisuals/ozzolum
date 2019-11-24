@@ -24,6 +24,10 @@ module.exports = class Player {
         this.health = this.data.health;
         this.maxHealth = this.data.maxHealth;
         this.fightingXP = { ...this.data.fightingXP.toObject() };
+        this.choppingXP = { ...this.data.choppingXP.toObject() };
+        this.miningXP = { ...this.data.miningXP.toObject() };
+        this.diggingXP = { ...this.data.diggingXP.toObject() };
+        this.fishingXP = { ...this.data.fishingXP.toObject() };
         this.ozzolites = this.data.ozzolites;
         this.stats = this.data.stats;
     }
@@ -71,6 +75,10 @@ module.exports = class Player {
         this.data.health = this.health;
         this.data.maxHealth = this.maxHealth;
         this.data.fightingXP = { ...this.fightingXP };
+        this.data.choppingXP = { ...this.choppingXP };
+        this.data.miningXP = { ...this.miningXP };
+        this.data.diggingXP = { ...this.diggingXP };
+        this.data.fishingXP = { ...this.fishingXP };
         this.data.ozzolites = this.ozzolites;
         this.data.stats = this.stats;
 
