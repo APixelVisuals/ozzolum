@@ -33,6 +33,14 @@ module.exports = class Player {
         this.stats = this.data.stats;
     }
 
+    hasUnlock(unlock) {
+        return this.unlocks.includes(unlock);
+    }
+
+    unlock(unlock) {
+        this.unlocks.push(unlock);
+    }
+
     async profileImage(user) {
 
         //Get utils
