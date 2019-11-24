@@ -32,6 +32,62 @@ module.exports = {
             default: 0
         }
     },
+    choppingXP: {
+        xp: {
+            type: Number,
+            default: 0
+        },
+        totalXP: {
+            type: Number,
+            default: 0
+        },
+        level: {
+            type: Number,
+            default: 0
+        }
+    },
+    miningXP: {
+        xp: {
+            type: Number,
+            default: 0
+        },
+        totalXP: {
+            type: Number,
+            default: 0
+        },
+        level: {
+            type: Number,
+            default: 0
+        }
+    },
+    diggingXP: {
+        xp: {
+            type: Number,
+            default: 0
+        },
+        totalXP: {
+            type: Number,
+            default: 0
+        },
+        level: {
+            type: Number,
+            default: 0
+        }
+    },
+    fishingXP: {
+        xp: {
+            type: Number,
+            default: 0
+        },
+        totalXP: {
+            type: Number,
+            default: 0
+        },
+        level: {
+            type: Number,
+            default: 0
+        }
+    },
     ozzolites: {
         type: Number,
         default: 0
