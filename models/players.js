@@ -18,6 +18,7 @@ module.exports = {
         type: Number,
         default: 200
     },
+    unlocks: [String],
     fightingXP: {
         xp: {
             type: Number,
