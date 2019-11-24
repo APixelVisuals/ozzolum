@@ -92,8 +92,8 @@ module.exports = class Image {
         //Add to compositions
         this.compositions.splice(this.compositions.length - 1 - behind, 0, {
             input: image,
-            left: x,
-            top: y
+            left: Math.round(x),
+            top: Math.round(y)
         });
     }
 
