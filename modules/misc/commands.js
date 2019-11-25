@@ -30,6 +30,13 @@ module.exports = [
         usage: "profile [User]",
     },
     {
+        file: "skills",
+        name: "Skills",
+        inputs: ["skills"],
+        type: "basic",
+        usage: "skills [User]",
+    },
+    {
         file: "equip",
         name: "Equip",
         inputs: ["equip", "use"],

@@ -50,6 +50,21 @@ module.exports = class Player {
         });
     }
 
+    async skillsImage(user) {
+
+        //Get utils
+        const { imageGenerators, _ } = this._;
+
+        //Generate image
+        return await imageGenerators.skills(_, user, [
+            { name: "Fighting", ...this.fighting },
+            { name: "Chopping", ...this.chopping },
+            { name: "Mining", ...this.mining },
+            { name: "Digging", ...this.digging },
+            this.hasUnlock("fishing") && { name: "Fishing", ...this.fishing }
+        ].filter(s => s));
+    }
+
     //Stats
     incrementStats(name, amount) {
 
