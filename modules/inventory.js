@@ -20,7 +20,7 @@ module.exports = async ({ client, util, classes, models, Discord, loadingImage, 
     target = client.users.get(target);
 
     //No user
-    if (!target) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  I couldn't find that user!**`);
+    if (!target) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, I couldn't find that user!**`);
 
     //Invalid page number
     if ((page < 1) || (isNaN(page))) page = 1;
@@ -31,7 +31,7 @@ module.exports = async ({ client, util, classes, models, Discord, loadingImage, 
         new classes.Player(_, await models.players.findById(target.id));
 
     //No player
-    if (player.noPlayer) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  That person hasn't started a game!**`);
+    if (player.noPlayer) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, That person hasn't started a game!**`);
 
     //Embed
     const embed = new Discord.RichEmbed()
