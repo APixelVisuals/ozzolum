@@ -29,7 +29,7 @@ module.exports = class Inventory {
 
         items = items.map(i => {
 
-            const item = util.items.find(ii => ii.name === i.name);
+            const item = util.items[i.name];
 
             const nameTags = i.name.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
             const typeTags = item.type.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
@@ -43,7 +43,7 @@ module.exports = class Inventory {
         }).filter(i => i).sort((a, b) => b.matches - a.matches).map(i => i.item);
 
         //Return
-        return all ? items : (items[0] && util.items.find(i => i.name === items[0].name));
+        return all ? items : (items[0] && { name: items[0].name, ...util.items[items[0].name] });
     }
 
     addItem(name, amount) {
