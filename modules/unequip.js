@@ -1,7 +1,8 @@
 module.exports = async ({ client, util, _ }, message) => {
 
-    //Cooldown
+    //Pre Module
     if (!await util.cooldown(_, message, 2000)) return;
+    const { player } = message.author;
 
     //Get params
     let type = message.content.split(" ").slice(1).join(" ").toLowerCase().replace(/\s+/g, "");
@@ -18,7 +19,7 @@ module.exports = async ({ client, util, _ }, message) => {
     else return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, That item type doesn't exist!**`);
 
     //Not equipped
-    if (!message.author.player[type].tool) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have ${{
+    if (!player[type].tool) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have ${{
         fighting: "a Weapon",
         chopping: "an Axe",
         mining: "a Pickaxe",
@@ -27,11 +28,11 @@ module.exports = async ({ client, util, _ }, message) => {
     }[type]} equipped!**`);
 
     //Get item
-    const item = message.author.player[type].tool;
+    const item = player[type].tool;
 
     //Unequip
-    message.author.player.inv.addItem(item);
-    message.author.player[type].tool = undefined;
+    player.inv.addItem(item);
+    player[type].tool = undefined;
 
     //Send
     message.channel.send(`${client.ozzolumEmojis["checkmark"]}  **|  ${message.author}, You've unequipped the ${item}!**`);
