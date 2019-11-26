@@ -23,7 +23,7 @@ module.exports = async ({ client, modules, imageGenerators, util, classes, model
 
         eval(code);
 
-        message.channel.send(":white_check_mark:  **|  Done!**");
+        message.channel.send(`${client.ozzolumEmojis["checkmark"]}  **|  Done!**`);
     }
     catch (err) {
 

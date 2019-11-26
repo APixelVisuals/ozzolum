@@ -27,5 +27,5 @@ module.exports = async ({ client, util, _ }, message) => {
     _.modules = loadModules();
 
     //Send
-    message.channel.send(":white_check_mark:  **|  Restarted module!**");
+    message.channel.send(`${client.ozzolumEmojis["checkmark"]}  **|  Restarted module!**`);
 };
