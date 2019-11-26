@@ -7,14 +7,14 @@ module.exports = async ({ client, util, _ }, message) => {
     let item = message.content.split(" ").slice(1).join(" ");
 
     //No item
-    if (!item) return message.channel.send(`:x:  **|  ${message.author}, What would you like to equip?**`);
+    if (!item) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, What would you like to equip?**`);
 
     //Get item
     item = message.author.player.inv.getItem(item);
-    if (!item) return message.channel.send(`:x:  **|  ${message.author}, You don't have that item!**`);
+    if (!item) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have that item!**`);
 
     //Not equippable
-    if (!item.equipType) return message.channel.send(`:x:  **|  ${message.author}, That item isn't equippable!**`);
+    if (!item.equipType) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, That item isn't equippable!**`);
 
     //Equip
     message.author.player.inv.addItem(message.author.player[item.equipType].tool);

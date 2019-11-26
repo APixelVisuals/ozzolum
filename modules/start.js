@@ -1,11 +1,11 @@
-module.exports = async ({ imageGenerators, util, models, Discord, loadingImage, _ }, message) => {
+module.exports = async ({ client, imageGenerators, util, models, Discord, loadingImage, _ }, message) => {
 
     //Cooldown
     if (!await util.cooldown(_, message, 5000)) return;
 
     //Already started
     const userData = await models.players.findById(message.author.id);
-    if (userData) return message.channel.send(`:x:  **|  ${message.author}, You've already started a game!**`);
+    if (userData) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You've already started a game!**`);
 
     //Add to DB
     await models.players.create({

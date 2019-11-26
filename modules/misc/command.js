@@ -1,9 +1,9 @@
-module.exports = async ({ classes, models, util, _ }, message, command, ownerOnly) => {
+module.exports = async ({ client, classes, models, util, _ }, message, command, ownerOnly) => {
 
     //Get data
     const userData = await models.players.findById(message.author.id);
     if (!userData) {
-        if (!ownerOnly) message.channel.send(`:x:  **|  ${message.author}, You haven't started a game yet! Start by saying \`o!start\`**`);
+        if (!ownerOnly) message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You haven't started a game yet! Start by saying \`o!start\`**`);
         return;
     }
 

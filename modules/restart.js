@@ -13,11 +13,11 @@ module.exports = async ({ client, util, _ }, message) => {
 
     //Check if file exists
     const file = await util.checkFile(fullPath);
-    if (!file) return message.channel.send(":x:  **|  That file doesn't exist!**");
+    if (!file) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  That file doesn't exist!**`);
 
     //Check if code is valid
     const error = errorCheck(file, fullPath);
-    if (error) return message.channel.send(`:x:  **|  Error Compiling:**\n\`\`\`\n${error}\`\`\``);
+    if (error) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  Error Compiling:**\n\`\`\`\n${error}\`\`\``);
 
     //Delete module from cache
     try { delete require.cache[require.resolve(`./${path}`)]; }

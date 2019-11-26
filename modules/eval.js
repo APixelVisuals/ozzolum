@@ -29,6 +29,6 @@ module.exports = async ({ client, modules, imageGenerators, util, classes, model
 
         console.log(chalk.red(err));
 
-        message.channel.send(":x:  **|  Error has been logged to the console!**");
+        message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  Error has been logged to the console!**`);
     }
 };

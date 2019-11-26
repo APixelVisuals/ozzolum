@@ -7,7 +7,7 @@ module.exports = async ({ client, util, _ }, message) => {
     let type = message.content.split(" ").slice(1).join(" ").toLowerCase().replace(/\s+/g, "");
 
     //No type
-    if (!type) return message.channel.send(`:x:  **|  ${message.author}, What type of item would you like to unequip?**`);
+    if (!type) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, What type of item would you like to unequip?**`);
 
     //Parse type
     if (["weapon", "sword"].includes(type)) type = "fighting";
@@ -15,10 +15,10 @@ module.exports = async ({ client, util, _ }, message) => {
     else if (["pickaxe", "pick"].includes(type)) type = "mining";
     else if (["shovel"].includes(type)) type = "digging";
     else if (["fishingrod", "fishingpole"].includes(type)) type = "fishing";
-    else return message.channel.send(`:x:  **|  ${message.author}, That item type doesn't exist!**`);
+    else return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, That item type doesn't exist!**`);
 
     //Not equipped
-    if (!message.author.player[type].tool) return message.channel.send(`:x:  **|  ${message.author}, You don't have ${{
+    if (!message.author.player[type].tool) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have ${{
         fighting: "a Weapon",
         chopping: "an Axe",
         mining: "a Pickaxe",

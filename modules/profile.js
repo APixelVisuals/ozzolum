@@ -10,7 +10,7 @@ module.exports = async ({ client, util, classes, models, Discord, loadingImage, 
     target = client.users.get(target);
 
     //No user
-    if (!target) return message.channel.send(":x:  **|  I couldn't find that user!**");
+    if (!target) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  I couldn't find that user!**`);
 
     //Get player
     const player = target.id === message.author.id ?
@@ -18,7 +18,7 @@ module.exports = async ({ client, util, classes, models, Discord, loadingImage, 
         new classes.Player(_, await models.players.findById(target.id));
 
     //No player
-    if (player.noPlayer) return message.channel.send(":x:  **|  That person hasn't started a game!**");
+    if (player.noPlayer) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  That person hasn't started a game!**`);
 
     //Embed
     const embed = new Discord.RichEmbed()
