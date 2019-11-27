@@ -45,7 +45,7 @@ module.exports = class Player {
         return await imageGenerators.profile(_, user, {
             health: this.health,
             maxHealth: this.maxHealth,
-            fightingXP: this.fightingXP,
+            fighting: this.fighting,
             ozzolites: this.ozzolites
         });
     }

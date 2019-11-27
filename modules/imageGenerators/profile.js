@@ -57,7 +57,7 @@ module.exports = async ({ classes, _ }, user, playerData) => {
 
     //Add fighting level
     const fightingLevel = image.text({
-        text: `Level ${playerData.fightingXP.level}`,
+        text: `Level ${playerData.fighting.level}`,
         font: "Roboto/Medium.ttf",
         fontSize: 45,
         color: "#7b4b35"
@@ -69,22 +69,22 @@ module.exports = async ({ classes, _ }, user, playerData) => {
     image.progressBar({
         width: 721,
         height: 31,
-        amount: playerData.fightingXP.xp,
-        maxAmount: (playerData.fightingXP.level * 50) + 200,
+        amount: playerData.fighting.xp,
+        maxAmount: (playerData.fighting.level * 50) + 200,
         color: "#a0694b",
         x: 600,
         y: 710
     });
 
     //Add fighting xp
-    const fightingXP = image.text({
-        text: `${playerData.fightingXP.xp}/${(playerData.fightingXP.level * 50) + 200} XP`,
+    const fighting = image.text({
+        text: `${playerData.fighting.xp}/${(playerData.fighting.level * 50) + 200} XP`,
         font: "Roboto/Medium.ttf",
         fontSize: 35,
         color: "#7b4b35"
     });
 
-    image.composite(fightingXP.image, (1301 - fightingXP.width), 766);
+    image.composite(fighting.image, (1301 - fighting.width), 766);
 
     //Add ozzolites
     const ozzolites = image.text({
