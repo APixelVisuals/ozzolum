@@ -1,4 +1,4 @@
-module.exports = async input => {
+module.exports = async ({ util }, input) => {
 
     //Modules
     const vibrant = require("node-vibrant");
@@ -7,7 +7,8 @@ module.exports = async input => {
     if (!input) return null;
 
     //Get palette
-    const palette = await vibrant.from(input).getPalette();
+    const palette = await util.promise(vibrant.from(input).getPalette(), true);
+    if (!palette) return null;
 
     //Get color
     let color =

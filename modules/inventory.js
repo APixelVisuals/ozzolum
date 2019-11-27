@@ -36,7 +36,7 @@ module.exports = async ({ client, util, classes, models, Discord, loadingImage, 
     //Embed
     const embed = new Discord.RichEmbed()
         .setAuthor(`${target.tag}'s Inventory`, target.displayAvatarURL)
-        .setColor(await util.getColor(target.displayAvatarURL))
+        .setColor(await util.getColor(_, target.displayAvatarURL))
         .setImage(loadingImage);
 
     //Send
