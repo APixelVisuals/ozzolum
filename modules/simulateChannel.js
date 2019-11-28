@@ -10,7 +10,7 @@ module.exports = async ({ client, _ }, message) => {
     const channel = message.content.split(" ").slice(1).join(" ").replace(/[<>#]/g, "");
 
     //Set simulated channel
-    _.simulatedChannel = channel;
+    _.simulatedChannel = channel || null;
 
     //Send
     message.channel.send(`${client.ozzolumEmojis["checkmark"]}  **|  The simulated channel has been set!**`);
