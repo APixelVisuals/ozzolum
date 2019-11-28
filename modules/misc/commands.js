@@ -62,5 +62,12 @@ module.exports = [
         ownerOnly: true,
         inputs: ["restart"],
         basic: true
+    },
+    {
+        file: "simulateChannel",
+        name: "Simulate Channel",
+        ownerOnly: true,
+        inputs: ["simulatechannel", "simulatechan", "schannel", "schan", "simulatec", "sc"],
+        basic: true
     }
 ];
