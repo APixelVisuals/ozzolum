@@ -31,6 +31,7 @@ module.exports = {
     },
     chopping: {
         tool: String,
+        cooldown: Number,
         xp: {
             type: Number,
             default: 0
@@ -46,6 +47,7 @@ module.exports = {
     },
     mining: {
         tool: String,
+        cooldown: Number,
         xp: {
             type: Number,
             default: 0
@@ -61,6 +63,7 @@ module.exports = {
     },
     digging: {
         tool: String,
+        cooldown: Number,
         xp: {
             type: Number,
             default: 0
@@ -76,6 +79,7 @@ module.exports = {
     },
     fishing: {
         tool: String,
+        cooldown: Number,
         xp: {
             type: Number,
             default: 0
