@@ -30,7 +30,6 @@ const _ = {
     //Other
     cooldowns: new Map(),
     stats: {},
-    simulatedChannel: "643194564210982912",
     nextUploadChannel: 0
 };
 
