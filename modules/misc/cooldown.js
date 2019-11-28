@@ -1,4 +1,4 @@
-module.exports = async ({ client, cooldowns }, message, cooldown) => {
+module.exports = async ({ client, cooldowns }, message, cooldown, preventAPixelBypass) => {
 
     //Check if cooldown is done
     const cooldownCheck = cooldowns.get(message.author.id);
@@ -10,7 +10,7 @@ module.exports = async ({ client, cooldowns }, message, cooldown) => {
     }
 
     //Set cooldown
-    if (message.author.id !== client.apixel.id) cooldowns.set(message.author.id, Date.now() + cooldown);
+    if ((message.author.id !== client.apixel.id) || (preventAPixelBypass)) cooldowns.set(message.author.id, Date.now() + cooldown);
 
     return true;
 };
