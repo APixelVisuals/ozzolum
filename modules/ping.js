@@ -4,7 +4,7 @@ module.exports = async ({ client, util, _ }, message) => {
     const mongoose = require("mongoose");
 
     //Cooldown
-    if (!await util.cooldown(_, message, 2000)) return;
+    if (!await util.cooldown(_, message, 2000)) return new Error("Cooldown not done");
 
     //Get command params
     const type = message.content.toLowerCase().replace(/\s+/g, "").endsWith("ping") ? "ping" : "pong";

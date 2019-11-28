@@ -1,7 +1,7 @@
 module.exports = async ({ client, util, classes, models, Discord, loadingImage, _ }, message) => {
 
     //Cooldown
-    if (!await util.cooldown(_, message, 5000)) return;
+    if (!await util.cooldown(_, message, 5000)) return new Error("Cooldown not done");
 
     //Get params
     const PARAMS = message.content.split(" ").slice(1);

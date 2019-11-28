@@ -11,8 +11,8 @@ module.exports = async ({ client, classes, models, util, _ }, message, command, 
     message.author.player = new classes.Player(_, userData);
 
     //Run command
-    await command(_, message);
+    const result = await command(_, message);
 
     //Save data
-    await util.save(_, message.author.player.getData());
+    if (!(result instanceof Error)) await util.save(_, message.author.player.getData());
 };
