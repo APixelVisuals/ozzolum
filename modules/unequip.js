@@ -1,8 +1,7 @@
-module.exports = async ({ client, util, _ }, message) => {
+module.exports = async ({ client, util, _ }, message, player) => {
 
-    //Pre Module
+    //Cooldown
     if (!await util.cooldown(_, message, 2000)) return new Error("Cooldown not done");
-    const { player } = message.author;
 
     //Get params
     let type = message.content.split(" ").slice(1).join(" ").toLowerCase().replace(/\s+/g, "");
