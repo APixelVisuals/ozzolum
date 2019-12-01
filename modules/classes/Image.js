@@ -87,7 +87,7 @@ module.exports = class Image {
         ), x, y);
     }
 
-    composite(image, x, y, behind) {
+    composite(image, x, y) {
 
         //Parse image
         if ((image instanceof Object) && (!(image instanceof Buffer))) {
@@ -96,11 +96,8 @@ module.exports = class Image {
             image = { create: { ...image, channels: 4 } };
         }
 
-        //Parse behind
-        if (!behind) behind = 0;
-
         //Add to compositions
-        this.compositions.splice(this.compositions.length - 1 - behind, 0, {
+        this.compositions.push({
             input: image,
             left: Math.round(x),
             top: Math.round(y)
