@@ -77,6 +77,53 @@ module.exports = class Image {
         ), x, y);
     }
 
+    item({ item, amount, bgColor, borderColor, x, y, noSlots }) {
+
+        //Add background
+        if (!noSlots) {
+
+            this.composite({
+                width: 175,
+                height: 175,
+                background: borderColor
+            }, x, y);
+
+            this.composite({
+                width: 155,
+                height: 155,
+                background: bgColor
+            }, x + 10, y + 10);
+        }
+
+        //Add item
+        this.composite(`assets/namedItems/${item}.png`, x + 23 - 48, y + 23);
+
+        //Add amount
+        const amountText = this.text({
+            text: amount,
+            font: "Roboto/Medium.ttf",
+            fontSize: 35,
+            color: "#000000"
+        });
+
+        const amountX = x + (175 - (amountText.width / 2));
+        const amountY = y - 8;
+
+        this.composite({
+            width: amountText.width + 36,
+            height: amountText.height + 36,
+            background: borderColor
+        }, amountX - 18, amountY - 18);
+
+        this.composite({
+            width: amountText.width + 20,
+            height: amountText.height + 20,
+            background: bgColor
+        }, amountX - 10, amountY - 10);
+
+        this.composite(amountText.image, amountX, amountY);
+    }
+
     async progressBar({ width, height, amount, maxAmount, color, x, y }) {
 
         //Add progress bar

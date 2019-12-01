@@ -36,42 +36,24 @@ module.exports = async ({ classes, _ }, user, items) => {
     items.forEach((i, index) => {
 
         //Get x
-        let x = 346;
+        let x = 323;
         if (index < 5) x = x + (275 * index);
         else x = x + (275 * (index - 5));
 
         //Get y
-        let y = 488;
+        let y = 465;
         if (index > 4) y = y + 275;
 
-        //Composite
-        image.composite(`assets/namedItems/${i.name}.png`, x - 48, y);
-
-        //Add amount
-        const amount = image.text({
-            text: i.amount,
-            font: "Roboto/Medium.ttf",
-            fontSize: 35,
-            color: "#000000"
+        //Add item
+        image.item({
+            item: i.name,
+            amount: i.amount,
+            bgColor: "#9a613c",
+            borderColor: "#7b4b35",
+            x,
+            y,
+            noSlots: true
         });
-
-        const amountX = x + (150 - (amount.width / 2));
-        const amountY = y - 30;
-
-        image.composite(amount.image, amountX, amountY);
-
-        //Add amount bg
-        image.composite({
-            width: amount.width + 36,
-            height: amount.height + 36,
-            background: "#7b4b35"
-        }, amountX - 18, amountY - 18, 1);
-
-        image.composite({
-            width: amount.width + 20,
-            height: amount.height + 20,
-            background: "#9a613c"
-        }, amountX - 10, amountY - 10, 1);
     });
 
     //Render + return
