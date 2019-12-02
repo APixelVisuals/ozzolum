@@ -4,7 +4,7 @@
  *  imageItemSlots:
  *      bgColor: The color of the item slot background
  *      borderColor: The color of the item slot border
- *      whiteText: Whether the text color of item images should be white or not
+ *      whiteText?: Whether the text color of item images should be white or not
  *  chop | mine | dig: Data for the chop/mine/dig commands
  *      loot:
  *          name: The item name
