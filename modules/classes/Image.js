@@ -44,7 +44,7 @@ module.exports = class Image {
     text({ text, font, fontSize, color, x, y }) {
 
         //Parse text
-        text = text.toString().replace(/[^A-Za-z0-9()[\]{}<>\-_!@#$%^&*=+:;.,?/\\|~'"` ]/g, "");
+        text = text.toString().replace(/[^A-Za-z0-9\n()[\]{}<>\-_!@#$%^&*=+:;.,?/\\|~'"` ]/g, "");
 
         //Generate font name
         const fontName = font.replace(/\//g, "").split(".")[0];
@@ -52,6 +52,8 @@ module.exports = class Image {
         //Draw text
         const image = text2png(text, {
             font: `${fontSize}px ${fontName}`,
+            textAlign: "center",
+            lineSpacing: 5,
             localFontPath: `assets/fonts/${font}`,
             localFontName: fontName,
             color
@@ -77,7 +79,10 @@ module.exports = class Image {
         ), x, y);
     }
 
-    item({ item, amount, bgColor, borderColor, x, y, noSlots }) {
+    item({ item, amount, bgColor, borderColor, x, y, whiteText, noSlots }) {
+
+        //Get utils
+        const { util } = this._;
 
         //Add background
         if (!noSlots) {
@@ -96,14 +101,25 @@ module.exports = class Image {
         }
 
         //Add item
-        this.composite(`assets/namedItems/${item}.png`, x + 23 - 48, y + 23);
+        this.composite(`assets/items/128x128/${item}.png`, x + 23, y + 23);
+
+        //Add item name
+        const itemData = util.items[item];
+        const nameText = this.text({
+            text: itemData.imageName || item,
+            font: "Roboto/Medium.ttf",
+            fontSize: itemData.imageFontSize || 35,
+            color: whiteText ? "#ffffff" : "#000000"
+        });
+
+        this.composite(nameText.image, x + 87 - (nameText.width / 2), y + 175 + 15);
 
         //Add amount
         const amountText = this.text({
             text: amount,
             font: "Roboto/Medium.ttf",
             fontSize: 35,
-            color: "#000000"
+            color: whiteText ? "#ffffff" : "#000000"
         });
 
         const amountX = x + (175 - (amountText.width / 2));
