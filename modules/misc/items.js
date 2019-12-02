@@ -11,6 +11,18 @@ module.exports = {
         type: "Crafting Ingredient",
         tags: ["wood"]
     },
+    "Dirt": {
+        type: "Material",
+        tags: ["earth", "ground"]
+    },
+    "Clay": {
+        type: "Material",
+        tags: ["earth", "ground"]
+    },
+    "Pebble": {
+        type: "Crafting Ingredient",
+        tags: ["rock", "stone"]
+    },
     "Stone Dagger": {
         type: "Weapon",
         tags: ["sword"],
