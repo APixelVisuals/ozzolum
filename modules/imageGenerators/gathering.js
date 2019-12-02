@@ -52,7 +52,7 @@ module.exports = async ({ classes, _ }, user, location, loot) => {
         if (loot.length > 5) y = 500;
         if (index > 4) y = y + 275;
 
-        //Add item bg
+        //Add item
         image.item({
             item: i.name,
             amount: i.amount,
