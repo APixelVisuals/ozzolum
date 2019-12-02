@@ -1,4 +1,16 @@
 module.exports = {
+    "Oak Log": {
+        type: "Material",
+        tags: ["wood"]
+    },
+    "Hickory Log": {
+        type: "Material",
+        tags: ["wood"]
+    },
+    "Stick": {
+        type: "Crafting Ingredient",
+        tags: ["wood"]
+    },
     "Stone Dagger": {
         type: "Weapon",
         tags: ["sword"],
