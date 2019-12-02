@@ -51,6 +51,13 @@ module.exports = [
         usage: "unequip <Type>",
     },
     {
+        file: "chop",
+        name: "Chop",
+        inputs: ["chop"],
+        type: "basic",
+        usage: "chop",
+    },
+    {
         file: "eval",
         name: "Eval",
         ownerOnly: true,
