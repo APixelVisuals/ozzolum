@@ -1,7 +1,10 @@
 /*
  *  name: The location name
  *  channel: The channel ID of the location
- *  itemImageWhiteText: Whether the text color of item images should be white or not
+ *  imageItemSlots:
+ *      bgColor: The color of the item slot background
+ *      borderColor: The color of the item slot border
+ *      whiteText: Whether the text color of item images should be white or not
  *  chop | mine | dig: Data for the chop/mine/dig commands
  *      loot:
  *          name: The item name
@@ -14,7 +17,11 @@ module.exports = [
     {
         name: "Forest",
         channel: "648803120830480384",
-        itemImageWhiteText: true,
+        imageItemSlots: {
+            bgColor: "#2c442d",
+            borderColor: "#8baf70",
+            whiteText: true
+        },
         chop: {
             loot: [
                 {

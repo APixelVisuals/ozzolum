@@ -56,11 +56,11 @@ module.exports = async ({ classes, _ }, user, location, loot) => {
         image.item({
             item: i.name,
             amount: i.amount,
-            bgColor: "#2c442d",
-            borderColor: "#8baf70",
+            bgColor: location.imageItemSlots.bgColor,
+            borderColor: location.imageItemSlots.borderColor,
             x,
             y,
-            whiteText: location.itemImageWhiteText
+            whiteText: location.imageItemSlots.whiteText
         });
     });
 
