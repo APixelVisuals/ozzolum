@@ -18,7 +18,7 @@ module.exports = [
         name: "Forest",
         channel: "648803120830480384",
         imageItemSlots: {
-            bgColor: "#2c442d",
+            bgColor: "#3f6040",
             borderColor: "#8baf70",
             whiteText: true
         },
