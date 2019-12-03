@@ -43,5 +43,5 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     m.edit(embed.setImage(await imageGenerators.gathering(_, message.author, location, loot)));
 
     //Stats
-    await util.stats(_, "Inventory Checked");
+    await util.stats(_, "Trees Chopped");
 };
