@@ -1,7 +1,7 @@
-module.exports = async ({ classes, _ }, user, location, loot) => {
+module.exports = async ({ classes, _ }, user, location, skill, loot, xpGain) => {
 
     //Create image
-    const image = new classes.Image(_, `assets/backgrounds/${location.name}.png`);
+    const image = new classes.Image(_, `assets/backgrounds/${location.name}${Math.ceil(loot.length / 5) <= 1 ? "" : Math.ceil(loot.length / 5)}.png`);
 
     //Add username + discriminator
     const username = image.text({
@@ -39,6 +39,67 @@ module.exports = async ({ classes, _ }, user, location, loot) => {
         y: 257
     });
 
+    //Add skill xp bar
+    image.progressBar({
+        width: 924,
+        height: 40,
+        amount: skill.xp,
+        maxAmount: (skill.level * 50) + 200,
+        color: "#d0efb1",
+        x: 509,
+        y: 611
+    });
+
+    //Add skill name
+    image.text({
+        text: skill.name,
+        font: "Roboto/Medium.ttf",
+        fontSize: 45,
+        color: "#8baf70",
+        x: 517,
+        y: 553
+    });
+
+    //Add skill level
+    const level = image.text({
+        text: `Level ${skill.level}`,
+        font: "Roboto/Medium.ttf",
+        fontSize: 45,
+        color: "#8baf70"
+    });
+
+    image.composite(level.image, (1414 - level.width), 553);
+
+    //Add location
+    image.text({
+        text: location.name,
+        font: "Roboto/Medium.ttf",
+        fontSize: 35,
+        color: "#8baf70",
+        x: 517,
+        y: 676
+    });
+
+    //Add skill xp
+    const xp = image.text({
+        text: `${skill.xp}/${(skill.level * 50) + 200} XP`,
+        font: "Roboto/Medium.ttf",
+        fontSize: 35,
+        color: "#8baf70"
+    });
+
+    image.composite(xp.image, (1414 - xp.width), 676);
+
+    //Add xp gain
+    const xpGainText = image.text({
+        text: `+${xpGain} XP`,
+        font: "Roboto/Italic.ttf",
+        fontSize: 35,
+        color: "#8baf70"
+    });
+
+    image.composite(xpGainText.image, 960 - (xpGainText.width / 2), 701);
+
     //Add loot
     loot.forEach((i, index) => {
 
@@ -48,9 +109,8 @@ module.exports = async ({ classes, _ }, user, location, loot) => {
         const x = (960 - ((((rowLength - 1) * 275) + 175) / 2)) + (275 * rowIndex);
 
         //Get y
-        let y = 600;
-        if (loot.length > 5) y = 500;
-        if (index > 4) y = y + 275;
+        let y = 850;
+        if (index > 4) y = y + 320;
 
         //Add item
         image.item({

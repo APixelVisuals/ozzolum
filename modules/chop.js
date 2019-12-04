@@ -30,6 +30,10 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
 
     loot.forEach(i => player.inv.addItem(i.name, i.amount));
 
+    //Add skill xp
+    const xpGain = Math.floor(Math.random() * (50 - 30)) + 30;
+    player.addXP("chopping", xpGain);
+
     //Embed
     const embed = new Discord.RichEmbed()
         .setAuthor(`${message.author.tag}: ${location.name}`, message.author.displayAvatarURL)
@@ -40,7 +44,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     const m = await message.channel.send(embed);
 
     //Generate gathering image
-    m.edit(embed.setImage(await imageGenerators.gathering(_, message.author, location, loot)));
+    m.edit(embed.setImage(await imageGenerators.gathering(_, message.author, location, { name: "Chopping", ...player.chopping }, loot, xpGain)));
 
     //Stats
     await util.stats(_, "Trees Chopped");
