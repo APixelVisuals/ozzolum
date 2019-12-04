@@ -28,6 +28,20 @@ module.exports = class Player {
         this.stats = this.data.stats;
     }
 
+    addXP(skill, amount) {
+
+        //Add xp
+        this[skill].xp = this[skill].xp + amount;
+        this[skill].totalXP = this[skill].totalXP + amount;
+
+        //Level up
+        const levelUpXP = this[skill].level * 50 + 200;
+        if (this[skill].xp >= levelUpXP) {
+            this[skill].xp = this[skill].xp - levelUpXP;
+            this[skill].level = this[skill].level + 1;
+        }
+    }
+
     hasUnlock(unlock) {
         return this.unlocks.includes(unlock);
     }
