@@ -31,7 +31,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     loot.forEach(i => player.inv.addItem(i.name, i.amount));
 
     //Add skill xp
-    const xpGain = Math.floor(Math.random() * (50 - 30)) + 30;
+    const xpGain = Math.floor(Math.random() * (10 - 5)) + 5;
     player.addXP("chopping", xpGain);
 
     //Embed
