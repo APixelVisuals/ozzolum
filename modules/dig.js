@@ -1,7 +1,7 @@
 module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, simulatedChannel, _ }, message) => {
 
     //Pre Module
-    if (!await util.cooldown(_, message, 5000, true)) return;
+    if (!util.cooldown(_, message)) return new Error("Cooldown not done");
     const { player } = message.author;
 
     //Get location data

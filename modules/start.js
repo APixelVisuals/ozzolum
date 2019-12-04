@@ -1,7 +1,7 @@
 module.exports = async ({ client, imageGenerators, util, models, Discord, loadingImage, _ }, message) => {
 
     //Cooldown
-    if (!await util.cooldown(_, message, 5000)) return;
+    if (!util.cooldown(_, message)) return new Error("Cooldown not done");
 
     //Already started
     const userData = await models.players.findById(message.author.id);

@@ -1,7 +1,7 @@
 module.exports = async ({ client, util, _ }, message) => {
 
     //Pre Module
-    if (!await util.cooldown(_, message, 2000)) return;
+    if (!util.cooldown(_, message)) return new Error("Cooldown not done");
     const { player } = message.author;
 
     //Get params
