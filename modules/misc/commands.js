@@ -58,6 +58,13 @@ module.exports = [
         usage: "chop",
     },
     {
+        file: "dig",
+        name: "Dig",
+        inputs: ["dig"],
+        type: "basic",
+        usage: "dig",
+    },
+    {
         file: "eval",
         name: "Eval",
         ownerOnly: true,
