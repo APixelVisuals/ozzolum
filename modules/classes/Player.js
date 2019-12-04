@@ -35,7 +35,7 @@ module.exports = class Player {
         this[skill].totalXP = this[skill].totalXP + amount;
 
         //Level up
-        const levelUpXP = this[skill].level * 50 + 200;
+        const levelUpXP = this[skill].level * 50 + 50;
         if (this[skill].xp >= levelUpXP) {
             this[skill].xp = this[skill].xp - levelUpXP;
             this[skill].level = this[skill].level + 1;

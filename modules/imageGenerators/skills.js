@@ -60,7 +60,7 @@ module.exports = async ({ classes, _ }, user, skillData) => {
             width: 721,
             height: 31,
             amount: s.xp,
-            maxAmount: (s.level * 50) + 200,
+            maxAmount: (s.level * 50) + 50,
             color: "#a0694b",
             x: 173 + OFFSET_X,
             y: 547 + OFFSET_Y
@@ -98,7 +98,7 @@ module.exports = async ({ classes, _ }, user, skillData) => {
 
         //Add xp
         const xp = image.text({
-            text: `${s.xp}/${(s.level * 50) + 200} XP`,
+            text: `${s.xp}/${(s.level * 50) + 50} XP`,
             font: "Roboto/Medium.ttf",
             fontSize: 35,
             color: "#7b4b35"

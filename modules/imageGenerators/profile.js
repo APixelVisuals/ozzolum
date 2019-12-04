@@ -70,7 +70,7 @@ module.exports = async ({ classes, _ }, user, playerData) => {
         width: 721,
         height: 31,
         amount: playerData.fighting.xp,
-        maxAmount: (playerData.fighting.level * 50) + 200,
+        maxAmount: (playerData.fighting.level * 50) + 50,
         color: "#a0694b",
         x: 600,
         y: 710
@@ -78,7 +78,7 @@ module.exports = async ({ classes, _ }, user, playerData) => {
 
     //Add fighting xp
     const fighting = image.text({
-        text: `${playerData.fighting.xp}/${(playerData.fighting.level * 50) + 200} XP`,
+        text: `${playerData.fighting.xp}/${(playerData.fighting.level * 50) + 50} XP`,
         font: "Roboto/Medium.ttf",
         fontSize: 35,
         color: "#7b4b35"
