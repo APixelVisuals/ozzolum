@@ -7,12 +7,18 @@ module.exports = async ({ client, classes, models, util, _ }, message, command, 
         return;
     }
 
+    //Previous command not done
+    if (message.author.player) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  Please wait until your previous command is finished before using another one!**`);
+
     //Create player
-    const player = new classes.Player(_, userData);
+    message.author.player = new classes.Player(_, userData);
 
     //Run command
-    const result = await command(_, message, player);
+    const result = await command(_, message);
 
     //Save data
-    if (!(result instanceof Error)) await util.save(_, player.getData());
+    if (!(result instanceof Error)) await util.save(_, message.author.player.getData());
+
+    //Delete player
+    delete message.author.player;
 };
