@@ -1,4 +1,4 @@
-module.exports = async ({ client, modules, imageGenerators, util, classes, models, Discord, _ }, message, player) => {
+module.exports = async ({ client, modules, imageGenerators, util, classes, models, Discord, _ }, message) => {
 
     //Modules
     const chalk = require("chalk");
