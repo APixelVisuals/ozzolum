@@ -1,10 +1,20 @@
 module.exports = {
     //User ID
     _id: String,
-    inv: [{
-        name: String,
-        amount: Number
-    }],
+    backpack: {
+        name: {
+            type: String,
+            default: "Leather Satchel"
+        },
+        slots: {
+            type: Number,
+            default: 25
+        },
+        items: [{
+            name: String,
+            amount: Number
+        }]
+    },
     health: {
         type: Number,
         default: 200
