@@ -104,7 +104,7 @@ module.exports = class Image {
         this.composite(`assets/items/128x128/${item}.png`, x + 23, y + 23);
 
         //Add item name
-        const itemData = util.items[item];
+        const itemData = util.items.find(i => i.name === item);
         const nameText = this.text({
             text: itemData.imageName || item,
             font: "Roboto/Medium.ttf",

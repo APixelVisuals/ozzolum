@@ -1,46 +1,56 @@
-module.exports = {
-    "Oak Log": {
+module.exports = [
+    {
+        name: "Oak Log",
         type: "Material",
         tags: ["wood"]
     },
-    "Hickory Log": {
+    {
+        name: "Hickory Log",
         type: "Material",
         tags: ["wood"]
     },
-    "Stick": {
+    {
+        name: "Stick",
         type: "Crafting Ingredient",
         tags: ["wood"]
     },
-    "Dirt": {
+    {
+        name: "Dirt",
         type: "Material",
         tags: ["earth", "ground"]
     },
-    "Clay": {
+    {
+        name: "Clay",
         type: "Material",
         tags: ["earth", "ground"]
     },
-    "Pebble": {
+    {
+        name: "Pebble",
         type: "Crafting Ingredient",
         tags: ["rock", "stone"]
     },
-    "Stone Dagger": {
+    {
+        name: "Stone Dagger",
         type: "Weapon",
         tags: ["sword"],
         equipType: "fighting"
     },
-    "Stone Hatchet": {
+    {
+        name: "Stone Hatchet",
         type: "Axe",
         tags: [],
         equipType: "chopping"
     },
-    "Stone Pickaxe": {
+    {
+        name: "Stone Pickaxe",
         type: "Pickaxe",
         tags: [],
         equipType: "mining"
     },
-    "Stone Shovel": {
+    {
+        name: "Stone Shovel",
         type: "Shovel",
         tags: [],
         equipType: "digging"
     }
-};
+];

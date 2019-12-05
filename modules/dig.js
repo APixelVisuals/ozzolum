@@ -12,7 +12,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     if (!location.dig) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can't dig here!**`);
 
     //Get tool data
-    const tool = util.items[player.digging.tool];
+    const tool = util.items.find(i => i.name === player.digging.tool);
     if (!tool) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have a Shovel equipped!**`);
 
     //Cooldown not done

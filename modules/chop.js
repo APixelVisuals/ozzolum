@@ -12,7 +12,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     if (!location.chop) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can't chop here!**`);
 
     //Get tool data
-    const tool = util.items[player.chopping.tool];
+    const tool = util.items.find(i => i.name === player.chopping.tool);
     if (!tool) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have an Axe equipped!**`);
 
     //Cooldown not done
