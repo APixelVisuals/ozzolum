@@ -10,6 +10,10 @@ module.exports = {
             type: Number,
             default: 25
         },
+        stackSize: {
+            type: Number,
+            default: 100
+        },
         items: [{
             name: String,
             amount: Number
