@@ -2,7 +2,10 @@ module.exports = class Inventory {
 
     constructor(_, inv) {
         this._ = _;
-        this.items = inv;
+        this.name = inv.name;
+        this.slots = inv.slots;
+        this.stackSize = inv.stackSize;
+        this.items = inv.items;
     }
 
     hasItems(name, amount) {
@@ -94,6 +97,15 @@ module.exports = class Inventory {
 
         //Generate image
         return await imageGenerators.inventory(_, user, items);
+    }
+
+    getData() {
+        return {
+            name: this.name,
+            slots: this.slots,
+            stackSize: this.stackSize,
+            items: this.items
+        };
     }
 
 };

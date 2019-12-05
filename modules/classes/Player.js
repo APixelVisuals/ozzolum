@@ -15,8 +15,7 @@ module.exports = class Player {
         this.data = data;
 
         //Set properties
-        this.backpack = { name: this.data.backpack.name, slots: this.data.backpack.slots, stackSize: this.data.backpack.stackSize };
-        this.inv = new PlayerInventory(_, this.data.backpack.items);
+        this.inv = new PlayerInventory(_, { ...this.data.backpack.toObject() });
         this.health = this.data.health;
         this.maxHealth = this.data.maxHealth;
         this.unlocks = this.data.unlocks;
@@ -100,7 +99,7 @@ module.exports = class Player {
     getData() {
 
         //Parse
-        this.data.backpack = { name: this.backpack.name, slots: this.backpack.slots, stackSize: this.backpack.stackSize, items: this.inv.items };
+        this.data.backpack = this.inv.getData();
         this.data.health = this.health;
         this.data.maxHealth = this.maxHealth;
         this.data.unlocks = this.unlocks;
