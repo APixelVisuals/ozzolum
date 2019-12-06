@@ -16,6 +16,8 @@ module.exports = async ({ client, imageGenerators, util, models, Discord, loadin
         digging: { tool: "Stone Shovel" }
     });
 
+    await models.homeInvs.create({ _id: message.author.id });
+
     //Embed
     const embed = new Discord.RichEmbed()
         .setTitle(`${message.author.tag}, Welcome to Ozzolum!`)
