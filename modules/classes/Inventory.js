@@ -198,7 +198,7 @@ module.exports = class Inventory {
 
             return matches ? { item: i, matches } : null;
         }).filter(i => i).sort((a, b) => (b.matches - a.matches) || (b.amount - a.amount)).map(i => i.item);
-        else items = items.sort((a, b) => a.amount - b.amount).sort((a, b) => a.name < b.name ? -1 : 1);
+        else items = items.sort((a, b) => (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0)) || (b.amount - a.amount));
 
         items = items.slice(startingItem, startingItem + 10);
 
