@@ -1,7 +1,7 @@
-module.exports = async ({ classes, _ }, user, items) => {
+module.exports = async ({ classes, _ }, user, items, backpackName, slots) => {
 
     //Create image
-    const image = new classes.Image(_, "assets/inventoryBG.png");
+    const image = new classes.Image(_, `assets/inventoryBG${items.length > 5 ? "2" : ""}.png`);
 
     //Add avatar
     await image.compositeAvatar({
@@ -32,17 +32,68 @@ module.exports = async ({ classes, _ }, user, items) => {
         y: 103
     });
 
+    //Add slots used bar
+    image.progressBar({
+        width: 924,
+        height: 40,
+        amount: slots.used,
+        maxAmount: slots.total,
+        color: "#a0694b",
+        x: 498,
+        y: 510
+    });
+
+    //Add inventory text
+    image.text({
+        text: "Inventory",
+        font: "Roboto/Medium.ttf",
+        fontSize: 45,
+        color: "#7b4b35",
+        x: 517,
+        y: 452
+    });
+
+    //Add slots used percent
+    const slotsUsedPercent = image.text({
+        text: `${Math.round((slots.used / slots.total) * 100)}% Full`,
+        font: "Roboto/Medium.ttf",
+        fontSize: 45,
+        color: "#7b4b35"
+    });
+
+    image.composite(slotsUsedPercent.image, (1414 - slotsUsedPercent.width), 452);
+
+    //Add backpack name
+    image.text({
+        text: backpackName,
+        font: "Roboto/Medium.ttf",
+        fontSize: 35,
+        color: "#7b4b35",
+        x: 517,
+        y: 575
+    });
+
+    //Add slots used
+    const slotsUsed = image.text({
+        text: `${slots.used}/${slots.total} Slots Used`,
+        font: "Roboto/Medium.ttf",
+        fontSize: 35,
+        color: "#7b4b35"
+    });
+
+    image.composite(slotsUsed.image, (1414 - slotsUsed.width), 575);
+
     //Add items
     items.forEach((i, index) => {
 
         //Get x
-        let x = 323;
-        if (index < 5) x = x + (275 * index);
-        else x = x + (275 * (index - 5));
+        const rowLength = index < items.length - (items.length % 5) ? 5 : ((items.length - 1) % 5) + 1;
+        const rowIndex = index % 5;
+        const x = (960 - ((((rowLength - 1) * 275) + 175) / 2)) + (275 * rowIndex);
 
         //Get y
-        let y = 465;
-        if (index > 4) y = y + 275;
+        let y = 740;
+        if (index > 4) y = y + 320;
 
         //Add item
         image.item({
@@ -51,8 +102,7 @@ module.exports = async ({ classes, _ }, user, items) => {
             bgColor: "#9a613c",
             borderColor: "#7b4b35",
             x,
-            y,
-            noSlots: true
+            y
         });
     });
 

@@ -203,7 +203,7 @@ module.exports = class Inventory {
         items = items.slice(startingItem, startingItem + 10);
 
         //Generate image
-        return await imageGenerators.inventory(_, user, items);
+        return await imageGenerators.inventory(_, user, items, this.name, { used: this.items.length, total: this.slots });
     }
 
     getData() {
