@@ -8,31 +8,185 @@ module.exports = class Inventory {
         this.items = inv.items;
     }
 
-    hasItems(name, amount) {
+    hasItems(items, returnMissing) {
 
-        //No amount
-        if (!amount) amount = 1;
+        //Parse items
+        if (typeof items === "string") items = { name: items };
+        if (!(items instanceof Array)) items = [items];
 
-        //Get item
-        const item = this.items.find(i => i.name === name);
-        if (!item) return false;
+        //Clone inv items
+        let invItems = [...this.items].map(i => ({ ...i }));
 
-        if (item.amount < amount) return false;
+        //Missing items
+        const missing = [];
 
+        //Loop through items
+        for (let i of items) {
+
+            //No amount
+            if (i.amount === undefined) i.amount = 1;
+
+            //No params
+            if ((!i.name) || (!i.amount)) continue;
+
+            //Get total item count
+            const total = invItems.filter(ii => ii.name === i.name).reduce((t, ii) => t + ii.amount, 0);
+
+            //Not enough items
+            if (total < i.amount) missing.push({ name: i.name, amount: i.amount - total });
+        }
+
+        //Return
+        return returnMissing ? missing : missing.length === 0;
+    }
+
+    addItems(items, force, inv) {
+
+        //No items
+        if (!items) return;
+
+        //Parse items
+        if (typeof items === "string") items = { name: items };
+        if (!(items instanceof Array)) items = [items];
+
+        items = items.map(i => ({ ...i, amount: (i.amount === undefined ? 1 : i.amount) })).filter(i => (i.name) && (i.amount));
+
+        //Clone inv items
+        let invItems = [...(inv || this.items)].map(i => ({ ...i }));
+
+        //Dropped
+        const dropped = [];
+
+        //Loop through items
+        for (let i of items) {
+
+            //Get total item count
+            const total = invItems.filter(ii => ii.name === i.name).reduce((t, ii) => t + ii.amount, 0) + i.amount;
+
+            //Remove items
+            invItems = invItems.filter(ii => ii.name !== i.name);
+
+            //Add items to stacks
+            for (let j = 0; j < Math.floor(total / this.stackSize); j++) {
+                if (invItems.length === this.slots) {
+                    const droppedItem = dropped.find(ii => ii.name === i.name);
+                    if (droppedItem) droppedItem.amount = droppedItem.amount + this.stackSize;
+                    else dropped.push({ name: i.name, amount: this.stackSize, dropped: true });
+                }
+                else invItems.push({ name: i.name, amount: this.stackSize });
+            }
+
+            if (total % this.stackSize) {
+                if (invItems.length === this.slots) {
+                    const droppedItem = dropped.find(ii => ii.name === i.name);
+                    if (droppedItem) droppedItem.amount = droppedItem.amount + total % this.stackSize;
+                    else dropped.push({ name: i.name, amount: total % this.stackSize, dropped: true });
+                }
+                else invItems.push({ name: i.name, amount: total % this.stackSize });
+            }
+        }
+
+        //Set items
+        if (((!dropped.length) || (force)) && (!inv)) this.items = invItems;
+
+        //Return
+        return {
+            inv: invItems,
+            dropped,
+            added: items.map(i => {
+                const droppedItem = dropped.find(ii => ii.name === i.name);
+                const amount = i.amount - (droppedItem ? droppedItem.amount : 0);
+                return amount ? { name: i.name, amount, added: true } : null;
+            }).filter(i => i)
+        };
+    }
+
+    removeItems(items, force, inv) {
+
+        //No items
+        if (!items) return;
+
+        //Parse items
+        if (typeof items === "string") items = { name: items };
+        if (!(items instanceof Array)) items = [items];
+
+        items = items.map(i => ({ ...i, amount: (i.amount === undefined ? 1 : i.amount) })).filter(i => (i.name) && (i.amount));
+
+        //Clone inv items
+        let invItems = [...(inv || this.items)].map(i => ({ ...i }));
+
+        //Missing
+        const missing = [];
+
+        //Loop through items
+        for (let i of items) {
+
+            //Get total item count
+            let total = invItems.filter(ii => ii.name === i.name).reduce((t, ii) => t + ii.amount, 0) - i.amount;
+
+            //Not enough items
+            if (total < 0) {
+                missing.push({ name: i.name, amount: total / -1, missing: true });
+                total = 0;
+            }
+
+            //Remove items
+            invItems = invItems.filter(ii => ii.name !== i.name);
+
+            //Add items to stacks
+            for (let j = 0; j < Math.floor(total / this.stackSize); j++) invItems.push({ name: i.name, amount: this.stackSize });
+            if (total % this.stackSize) invItems.push({ name: i.name, amount: total % this.stackSize });
+        }
+
+        //Set items
+        if (((!missing.length) || (force)) && (!inv)) this.items = invItems;
+
+        //Return
+        return {
+            inv: invItems,
+            missing,
+            removed: items.map(i => {
+                const missingItem = missing.find(ii => ii.name === i.name);
+                const amount = i.amount - (missingItem ? missingItem.amount : 0);
+                return amount ? { name: i.name, amount, added: true } : null;
+            }).filter(i => i)
+        };
+    }
+
+    updateItems({ remove, add }) {
+
+        //Clone inv items
+        let invItems = [...this.items].map(i => ({ ...i }));
+
+        //Remove items
+        const removeData = this.removeItems(remove || [], null, invItems);
+        if (removeData.missing.length) return;
+        invItems = removeData.inv;
+
+        //Add items
+        const addData = this.addItems(add || [], null, invItems);
+        if (addData.dropped.length) return;
+        invItems = addData.inv;
+
+        //Set items
+        this.items = invItems;
+
+        //Return
         return true;
     }
 
-    getItem(searchQuery, all) {
+    async toImage(user, page, searchQuery) {
 
         //Get utils
-        const { util } = this._;
+        const { imageGenerators, util, _ } = this._;
 
         //Get items
+        const startingItem = 10 * (page - 1);
         let items = [...this.items];
 
-        items = items.map(i => {
+        if (searchQuery) items = items.map(i => {
 
-            const item = util.items[i.name];
+            const item = util.items.find(ii => ii.name === i.name);
 
             const nameTags = i.name.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
             const typeTags = item.type.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
@@ -43,55 +197,8 @@ module.exports = class Inventory {
             const matches = itemTags.filter(t => queryTags.some(tt => t.startsWith(tt) || t.endsWith(tt))).length;
 
             return matches ? { item: i, matches } : null;
-        }).filter(i => i).sort((a, b) => b.matches - a.matches).map(i => i.item);
-
-        //Return
-        return all ? items : (items[0] && { name: items[0].name, ...util.items[items[0].name] });
-    }
-
-    addItem(name, amount) {
-
-        //No amount
-        if (amount === undefined) amount = 1;
-
-        //No params
-        if ((!name) || (!amount)) return;
-
-        //Add item
-        if (!this.items.find(i => i.name === name)) this.items.push({ name, amount: 0 });
-
-        const item = this.items.find(i => i.name === name);
-        item.amount = item.amount + amount;
-    }
-
-    removeItem(name, amount) {
-
-        //No amount
-        if (amount === undefined) amount = 1;
-
-        //No params
-        if ((!name) || (!amount)) return;
-
-        //Remove item
-        const item = this.items.find(i => i.name === name);
-        if (!item) return;
-
-        item.amount = item.amount - amount;
-
-        if (item.amount <= 0) this.items.splice(this.items.indexOf(item), 1);
-    }
-
-    async toImage(user, page, searchQuery) {
-
-        //Get utils
-        const { imageGenerators, _ } = this._;
-
-        //Get items
-        const startingItem = 10 * (page - 1);
-        let items = [...this.items];
-
-        if (searchQuery) items = this.getItem(searchQuery, true);
-        else items = items.sort((a, b) => a.name < b.name ? -1 : 1);
+        }).filter(i => i).sort((a, b) => (b.matches - a.matches) || (b.amount - a.amount)).map(i => i.item);
+        else items = items.sort((a, b) => a.amount - b.amount).sort((a, b) => a.name < b.name ? -1 : 1);
 
         items = items.slice(startingItem, startingItem + 10);
 

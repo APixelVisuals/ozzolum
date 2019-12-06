@@ -20,6 +20,8 @@ module.exports = [
         imageItemSlots: {
             bgColor: "#3f6040",
             borderColor: "#8baf70",
+            droppedBGColor: "#7e402b",
+            droppedBorderColor: "#e03131",
             whiteText: true
         },
         chop: {

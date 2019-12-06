@@ -29,7 +29,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
         .filter(i => (Math.floor(Math.random() * 99) + 1) < i.frequency)
         .map(i => ({ name: i.name, amount: Math.floor(Math.random() * (i.max - i.min)) + i.min }));
 
-    loot.forEach(i => player.inv.addItem(i.name, i.amount));
+    const result = player.inv.addItems(loot, true);
 
     //Add skill xp
     const xpGain = Math.floor(Math.random() * (10 - 5)) + 5;
@@ -45,7 +45,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     const m = await message.channel.send(embed);
 
     //Generate gathering image
-    m.edit(embed.setImage(await imageGenerators.gathering(_, message.author, location, { name: "Digging", ...player.digging }, loot, xpGain)));
+    m.edit(embed.setImage(await imageGenerators.gathering(_, message.author, location, { name: "Digging", ...player.digging }, result.added.concat(result.dropped), xpGain)));
 
     //Stats
     await util.stats(_, "Ground Dug");

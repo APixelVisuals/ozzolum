@@ -116,8 +116,8 @@ module.exports = async ({ classes, _ }, user, location, skill, loot, xpGain) => 
         image.item({
             item: i.name,
             amount: i.amount,
-            bgColor: location.imageItemSlots.bgColor,
-            borderColor: location.imageItemSlots.borderColor,
+            bgColor: location.imageItemSlots[i.dropped ? "droppedBGColor" : "bgColor"],
+            borderColor: location.imageItemSlots[i.dropped ? "droppedBorderColor" : "borderColor"],
             x,
             y,
             whiteText: location.imageItemSlots.whiteText
