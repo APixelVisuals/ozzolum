@@ -43,9 +43,9 @@ module.exports = async ({ classes, _ }, user, items, storageUnitName, slots) => 
         y: 510
     });
 
-    //Add inventory text
+    //Add items text
     image.text({
-        text: "Inventory",
+        text: "Items",
         font: "Roboto/Medium.ttf",
         fontSize: 45,
         color: "#7b4b35",
