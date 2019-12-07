@@ -32,6 +32,9 @@ module.exports = async ({ classes, _ }, user, items, storageUnitName, slots) => 
         y: 103
     });
 
+    //Add storage unit
+    image.composite(`assets/items/256x256/${storageUnitName}.png`, 1539, 41);
+
     //Add slots used bar
     image.progressBar({
         width: 924,
