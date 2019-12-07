@@ -197,7 +197,7 @@ module.exports = class Inventory {
             const matches = itemTags.filter(t => queryTags.some(tt => t.startsWith(tt) || t.endsWith(tt))).length;
 
             return matches ? { item: i, matches } : null;
-        }).filter(i => i).sort((a, b) => (b.matches - a.matches) || (b.amount - a.amount)).map(i => i.item);
+        }).filter(i => i).sort((a, b) => (b.matches - a.matches) || (a.item.name < b.item.name ? -1 : (a.item.name > b.item.name ? 1 : 0)) || (b.item.amount - a.item.amount)).map(i => i.item);
         else items = items.sort((a, b) => (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0)) || (b.amount - a.amount));
 
         items = items.slice(startingItem, startingItem + 10);
