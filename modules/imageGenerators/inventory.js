@@ -1,4 +1,4 @@
-module.exports = async ({ classes, _ }, user, items, storageName, slots) => {
+module.exports = async ({ classes, _ }, user, items, storageUnitName, slots) => {
 
     //Create image
     const image = new classes.Image(_, `assets/inventoryBG${items.length > 5 ? "2" : ""}.png`);
@@ -63,9 +63,9 @@ module.exports = async ({ classes, _ }, user, items, storageName, slots) => {
 
     image.composite(slotsUsedPercent.image, (1414 - slotsUsedPercent.width), 452);
 
-    //Add storage name
+    //Add storage unit name
     image.text({
-        text: storageName,
+        text: storageUnitName,
         font: "Roboto/Medium.ttf",
         fontSize: 35,
         color: "#7b4b35",
