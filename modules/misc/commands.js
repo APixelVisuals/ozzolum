@@ -90,5 +90,12 @@ module.exports = [
         ownerOnly: true,
         inputs: ["simulatechannel", "simulatechan", "schannel", "schan", "simulatec", "sc"],
         basic: true
+    },
+    {
+        file: "scaleImages",
+        name: "Scale Images",
+        ownerOnly: true,
+        inputs: ["scaleimages"],
+        basic: true
     }
 ];
