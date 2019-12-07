@@ -15,6 +15,10 @@
 
 module.exports = [
     {
+        name: "Home",
+        channel: "652018275332390949"
+    },
+    {
         name: "Forest",
         channel: "648803120830480384",
         imageItemSlots: {
