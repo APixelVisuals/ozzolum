@@ -1,7 +1,7 @@
 module.exports = async ({ classes, _ }, user, location, skill, loot, xpGain) => {
 
     //Create image
-    const image = new classes.Image(_, `assets/backgrounds/${location.name}${Math.ceil(loot.length / 5) <= 1 ? "" : Math.ceil(loot.length / 5)}.png`);
+    const image = new classes.Image(_, `assets/backgrounds/locations/${location.name}${Math.ceil(loot.length / 5) <= 1 ? "" : Math.ceil(loot.length / 5)}.png`);
 
     //Add username + discriminator
     const username = image.text({

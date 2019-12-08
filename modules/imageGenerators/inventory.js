@@ -1,7 +1,10 @@
 module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slots, error) => {
 
     //Create image
-    const image = new classes.Image(_, `assets/inventoryBG${items.length > 5 ? "2" : ""}.png`);
+    const image = new classes.Image(_, `assets/backgrounds/storageUnits/${storageUnitName}${items.length > 5 ? "2" : ""}.png`);
+
+    //Get colors
+    const colors = util.items.find(i => i.name === storageUnitName).inventoryImageColors;
 
     //Add avatar
     await image.compositeAvatar({
@@ -17,7 +20,7 @@ module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slot
         text: user.username,
         font: "Roboto/Black.ttf",
         fontSize: 85,
-        color: "#7b4b35",
+        color: colors.accent,
         x: 365,
         y: 63
     });
@@ -27,13 +30,10 @@ module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slot
         text: `#${user.discriminator}`,
         font: "Roboto/Black.ttf",
         fontSize: 35,
-        color: "#7b4b35",
+        color: colors.accent,
         x: 365 + username.width + 5,
         y: 103
     });
-
-    //Add storage unit
-    image.composite(`assets/items/256x256/${storageUnitName}.png`, 1539, 41 + (util.items.find(i => i.name === storageUnitName).inventoryImageOffset || 0));
 
     //Add slots used bar
     image.progressBar({
@@ -41,19 +41,9 @@ module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slot
         height: 40,
         amount: slots.used,
         maxAmount: slots.total,
-        color: "#a0694b",
+        color: colors.slotsUsedBar,
         x: 498,
         y: 510
-    });
-
-    //Add items text
-    image.text({
-        text: "Items",
-        font: "Roboto/Medium.ttf",
-        fontSize: 45,
-        color: "#7b4b35",
-        x: 517,
-        y: 452
     });
 
     //Add slots used percent
@@ -61,27 +51,17 @@ module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slot
         text: `${Math.round((slots.used / slots.total) * 100)}% Full`,
         font: "Roboto/Medium.ttf",
         fontSize: 45,
-        color: "#7b4b35"
+        color: colors.accent
     });
 
     image.composite(slotsUsedPercent.image, (1414 - slotsUsedPercent.width), 452);
-
-    //Add storage unit name
-    image.text({
-        text: storageUnitName,
-        font: "Roboto/Medium.ttf",
-        fontSize: 35,
-        color: "#7b4b35",
-        x: 517,
-        y: 575
-    });
 
     //Add slots used
     const slotsUsed = image.text({
         text: `${slots.used}/${slots.total} Slots Used`,
         font: "Roboto/Medium.ttf",
         fontSize: 35,
-        color: "#7b4b35"
+        color: colors.accent
     });
 
     image.composite(slotsUsed.image, (1414 - slotsUsed.width), 575);
@@ -102,8 +82,8 @@ module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slot
         image.item({
             item: i.name,
             amount: i.amount,
-            bgColor: "#9a613c",
-            borderColor: "#7b4b35",
+            bgColor: colors.slotBG,
+            borderColor: colors.accent,
             x,
             y
         });
@@ -116,7 +96,7 @@ module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slot
             text: error,
             font: "Roboto/Italic.ttf",
             fontSize: 55,
-            color: "#7b4b35"
+            color: colors.accent
         });
 
         image.composite(errorText.image, 960 - (errorText.width / 2), 805 - (errorText.height / 2));

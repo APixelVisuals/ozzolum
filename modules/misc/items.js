@@ -38,13 +38,22 @@ module.exports = [
     {
         name: "Leather Satchel",
         type: "Storage Unit",
-        tags: ["backpack", "bag"]
+        tags: ["backpack", "bag"],
+        inventoryImageColors: {
+            accent: "#7b4b35",
+            slotsUsedBar: "#a0694b",
+            slotBG: "#9a613c"
+        }
     },
     {
         name: "Storage Locker",
         type: "Storage Unit",
         tags: [],
-        inventoryImageOffset: 40
+        inventoryImageColors: {
+            accent: "#777777",
+            slotsUsedBar: "#c9c9c9",
+            slotBG: "#999999"
+        }
     },
     {
         name: "Stone Hatchet",
