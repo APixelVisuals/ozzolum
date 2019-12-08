@@ -36,6 +36,11 @@ module.exports = [
         equipType: "fighting"
     },
     {
+        name: "Leather Satchel",
+        type: "Storage Unit",
+        tags: ["backpack", "bag"]
+    },
+    {
         name: "Stone Hatchet",
         type: "Axe",
         tags: [],
