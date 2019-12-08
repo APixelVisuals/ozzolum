@@ -1,4 +1,4 @@
-module.exports = async ({ classes, _ }, user, items, storageUnitName, slots) => {
+module.exports = async ({ classes, _ }, user, items, storageUnitName, slots, error) => {
 
     //Create image
     const image = new classes.Image(_, `assets/inventoryBG${items.length > 5 ? "2" : ""}.png`);
@@ -108,6 +108,19 @@ module.exports = async ({ classes, _ }, user, items, storageUnitName, slots) => 
             y
         });
     });
+
+    //Add error
+    if (error) {
+
+        const errorText = image.text({
+            text: error,
+            font: "Roboto/Italic.ttf",
+            fontSize: 55,
+            color: "#7b4b35"
+        });
+
+        image.composite(errorText.image, 960 - (errorText.width / 2), 805 - (errorText.height / 2));
+    }
 
     //Render + return
     return await image.render();

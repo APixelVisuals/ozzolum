@@ -183,27 +183,35 @@ module.exports = class Inventory {
         //Get items
         const startingItem = 10 * (page - 1);
         let items = [...this.items];
+        let error;
 
-        if (searchQuery) items = items.map(i => {
+        if (searchQuery) {
+            items = items.map(i => {
 
-            const item = util.items.find(ii => ii.name === i.name);
+                const item = util.items.find(ii => ii.name === i.name);
 
-            const nameTags = i.name.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
-            const typeTags = item.type.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
-            const itemTags = [...new Set([...item.tags, ...nameTags, ...typeTags])].filter(t => t);
+                const nameTags = i.name.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
+                const typeTags = item.type.toLowerCase().replace(/[^a-z ]/g, "").split(" ");
+                const itemTags = [...new Set([...item.tags, ...nameTags, ...typeTags])].filter(t => t);
 
-            const queryTags = [...new Set(searchQuery.toLowerCase().replace(/[^a-z ]/g, "").split(" "))].filter(t => t);
+                const queryTags = [...new Set(searchQuery.toLowerCase().replace(/[^a-z ]/g, "").split(" "))].filter(t => t);
 
-            const matches = itemTags.filter(t => queryTags.some(tt => t.startsWith(tt) || t.endsWith(tt))).length;
+                const matches = itemTags.filter(t => queryTags.some(tt => t.startsWith(tt) || t.endsWith(tt))).length;
 
-            return matches ? { item: i, matches } : null;
-        }).filter(i => i).sort((a, b) => (b.matches - a.matches) || (a.item.name < b.item.name ? -1 : (a.item.name > b.item.name ? 1 : 0)) || (b.item.amount - a.item.amount)).map(i => i.item);
-        else items = items.sort((a, b) => (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0)) || (b.amount - a.amount));
+                return matches ? { item: i, matches } : null;
+            }).filter(i => i).sort((a, b) => (b.matches - a.matches) || (a.item.name < b.item.name ? -1 : (a.item.name > b.item.name ? 1 : 0)) || (b.item.amount - a.item.amount)).map(i => i.item);
+            if (!items.length) error = "You don't have any Items that\nmatch that search query!";
+        }
+        else {
+            items = items.sort((a, b) => (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0)) || (b.amount - a.amount));
+            if (!items.length) error = "You don't have any Items!";
+        }
 
         items = items.slice(startingItem, startingItem + 10);
+        if ((!items.length) && (startingItem)) error = "You don't have that many Items!\nTry a lower page number";
 
         //Generate image
-        return await imageGenerators.inventory(_, user, items, this.name, { used: this.items.length, total: this.slots });
+        return await imageGenerators.inventory(_, user, items, this.name, { used: this.items.length, total: this.slots }, error);
     }
 
     getData() {
