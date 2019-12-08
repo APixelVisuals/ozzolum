@@ -1,4 +1,4 @@
-module.exports = async ({ classes, _ }, user, items, storageUnitName, slots, error) => {
+module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slots, error) => {
 
     //Create image
     const image = new classes.Image(_, `assets/inventoryBG${items.length > 5 ? "2" : ""}.png`);
@@ -33,7 +33,7 @@ module.exports = async ({ classes, _ }, user, items, storageUnitName, slots, err
     });
 
     //Add storage unit
-    image.composite(`assets/items/256x256/${storageUnitName}.png`, 1539, 41);
+    image.composite(`assets/items/256x256/${storageUnitName}.png`, 1539, 41 + (util.items.find(i => i.name === storageUnitName).inventoryImageOffset || 0));
 
     //Add slots used bar
     image.progressBar({

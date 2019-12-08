@@ -43,7 +43,8 @@ module.exports = [
     {
         name: "Storage Locker",
         type: "Storage Unit",
-        tags: []
+        tags: [],
+        inventoryImageOffset: 40
     },
     {
         name: "Stone Hatchet",
