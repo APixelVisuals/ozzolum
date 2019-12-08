@@ -41,6 +41,11 @@ module.exports = [
         tags: ["backpack", "bag"]
     },
     {
+        name: "Storage Locker",
+        type: "Storage Unit",
+        tags: []
+    },
+    {
         name: "Stone Hatchet",
         type: "Axe",
         tags: [],
