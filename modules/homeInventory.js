@@ -37,7 +37,7 @@ module.exports = async ({ client, util, classes, models, Discord, loadingImage, 
     if (!homeInvData) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, That person hasn't started a game!**`);
 
     //Create inventory
-    const homeInv = new classes.Inventory(_, homeInvData.inv);
+    const homeInv = new classes.Inventory(_, homeInvData.inv.toObject());
 
     //Embed
     const embed = new Discord.RichEmbed()
