@@ -30,6 +30,13 @@ module.exports = [
         usage: "homeinv [Search Query] [Page] [User]",
     },
     {
+        file: "take",
+        name: "Take",
+        inputs: ["take"],
+        type: "basic",
+        usage: "take [Amount] <Item>",
+    },
+    {
         file: "profile",
         name: "Profile",
         inputs: ["profile", "p"],
