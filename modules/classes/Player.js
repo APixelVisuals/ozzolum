@@ -15,7 +15,7 @@ module.exports = class Player {
         this.data = data;
 
         //Set properties
-        this.inv = new PlayerInventory(_, { ...this.data.backpack.toObject() });
+        this.inv = new PlayerInventory(_, this.data.backpack.toObject());
         this.health = this.data.health;
         this.maxHealth = this.data.maxHealth;
         this.unlocks = this.data.unlocks;
