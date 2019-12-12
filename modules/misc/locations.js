@@ -72,31 +72,5 @@ module.exports = [
                 }
             ]
         }
-    },
-    {
-        name: "Mines",
-        channel: "648804143196274700",
-        mine: {
-            loot: [
-                {
-                    name: "Stone",
-                    frequency: 100,
-                    min: 6,
-                    max: 12
-                },
-                {
-                    name: "Pebble",
-                    frequency: 85,
-                    min: 7,
-                    max: 15
-                },
-                {
-                    name: "Coal",
-                    frequency: 10,
-                    min: 3,
-                    max: 7
-                }
-            ]
-        }
     }
 ];
