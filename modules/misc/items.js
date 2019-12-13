@@ -59,18 +59,24 @@ module.exports = [
         name: "Stone Hatchet",
         type: "Axe",
         tags: [],
-        equipType: "chopping"
+        equipType: "chopping",
+        minDamage: 5,
+        maxDamage: 8
     },
     {
         name: "Stone Pickaxe",
         type: "Pickaxe",
         tags: [],
-        equipType: "mining"
+        equipType: "mining",
+        minDamage: 5,
+        maxDamage: 8
     },
     {
         name: "Stone Shovel",
         type: "Shovel",
         tags: [],
-        equipType: "digging"
+        equipType: "digging",
+        minDamage: 5,
+        maxDamage: 8
     }
 ];
