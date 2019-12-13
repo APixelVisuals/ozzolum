@@ -11,6 +11,9 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     //Not a location for exploring
     if (!location.areas) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can't explore here!**`);
 
+    //Not exploring here
+    if ((player.explore.location) && (player.explore.location !== location.name)) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You're exploring in ${client.channels.get(util.locations.find(l => l.name === player.explore.location).channel)}!**`);
+
     //Cooldown not done
     if ((player.explore.cooldown) && (player.explore.cooldown > Date.now())) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can't explore for another ${Math.ceil((player.explore.cooldown - Date.now()) / 1000)} seconds!**`);
 
