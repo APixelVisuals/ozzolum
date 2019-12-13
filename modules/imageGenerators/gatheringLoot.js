@@ -109,7 +109,7 @@ module.exports = async ({ classes, _ }, user, location, skill, loot, xpGain) => 
         const x = (960 - ((((rowLength - 1) * 275) + 175) / 2)) + (275 * rowIndex);
 
         //Get y
-        let y = 850;
+        let y = 900;
         if (index > 4) y = y + 320;
 
         //Add item
