@@ -72,6 +72,13 @@ module.exports = [
         usage: "unequip <Type>",
     },
     {
+        file: "explore",
+        name: "Explore",
+        inputs: ["explore"],
+        type: "basic",
+        usage: "explore",
+    },
+    {
         file: "chop",
         name: "Chop",
         inputs: ["chop"],

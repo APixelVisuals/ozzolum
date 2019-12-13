@@ -28,6 +28,14 @@ module.exports = {
         default: 200
     },
     unlocks: [String],
+    explore: {
+        location: String,
+        area: {
+            name: String,
+            durability: Number
+        },
+        cooldown: Number
+    },
     fighting: {
         tool: String,
         xp: {
