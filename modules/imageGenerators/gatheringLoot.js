@@ -98,7 +98,7 @@ module.exports = async ({ classes, _ }, user, location, skill, loot, xpGain) => 
         color: "#8baf70"
     });
 
-    image.composite(xpGainText.image, 960 - (xpGainText.width / 2), 701);
+    image.composite(xpGainText.image, 960 - (xpGainText.width / 2), 750);
 
     //Add loot
     loot.forEach((i, index) => {
