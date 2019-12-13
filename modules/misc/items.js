@@ -30,12 +30,6 @@ module.exports = [
         tags: ["rock", "stone"]
     },
     {
-        name: "Stone Dagger",
-        type: "Weapon",
-        tags: ["sword"],
-        equipType: "fighting"
-    },
-    {
         name: "Leather Satchel",
         type: "Storage Unit",
         tags: ["backpack", "bag"],
@@ -54,6 +48,12 @@ module.exports = [
             slotsUsedBar: "#c9c9c9",
             slotBG: "#999999"
         }
+    },
+    {
+        name: "Stone Dagger",
+        type: "Weapon",
+        tags: ["sword"],
+        equipType: "fighting"
     },
     {
         name: "Stone Hatchet",
