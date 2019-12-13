@@ -5,7 +5,11 @@
  *      bgColor: The color of the item slot background
  *      borderColor: The color of the item slot border
  *      whiteText?: Whether the text color of item images should be white or not
- *  chop | mine | dig: Data for the chop/mine/dig commands
+ *  areas: Areas you can find when exploring
+ *      name: The area name
+ *      type: The gathering type
+ *      chances: The chances that the player will find this area
+ *      durability: How much damage this can take before breaking
  *      loot:
  *          name: The item name
  *          frequency: The % chance that the player will get any amount of this item
@@ -28,49 +32,81 @@ module.exports = [
             droppedBorderColor: "#e03131",
             whiteText: true
         },
-        chop: {
-            loot: [
-                {
-                    name: "Oak Log",
-                    frequency: 100,
-                    min: 1,
-                    max: 3
-                },
-                {
-                    name: "Hickory Log",
-                    frequency: 20,
-                    min: 1,
-                    max: 3
-                },
-                {
-                    name: "Stick",
-                    frequency: 5,
-                    min: 1,
-                    max: 4
-                }
-            ]
-        },
-        dig: {
-            loot: [
-                {
-                    name: "Dirt",
-                    frequency: 100,
-                    min: 5,
-                    max: 10
-                },
-                {
-                    name: "Clay",
-                    frequency: 20,
-                    min: 3,
-                    max: 5
-                },
-                {
-                    name: "Pebble",
-                    frequency: 5,
-                    min: 5,
-                    max: 15
-                }
-            ]
-        }
+        areas: [
+            {
+                name: "Oak Tree",
+                type: "chopping",
+                chances: 100,
+                durability: 100,
+                loot: [
+                    {
+                        name: "Oak Log",
+                        frequency: 100,
+                        min: 10,
+                        max: 16
+                    },
+                    {
+                        name: "Stick",
+                        frequency: 35,
+                        min: 4,
+                        max: 11
+                    }
+                ]
+            },
+            {
+                name: "Hickory Tree",
+                type: "chopping",
+                chances: 75,
+                durability: 100,
+                loot: [
+                    {
+                        name: "Hickory Log",
+                        frequency: 100,
+                        min: 10,
+                        max: 16
+                    },
+                    {
+                        name: "Stick",
+                        frequency: 35,
+                        min: 4,
+                        max: 11
+                    }
+                ]
+            },
+            {
+                name: "Patch of Dirt",
+                type: "digging",
+                chances: 100,
+                durability: 100,
+                loot: [
+                    {
+                        name: "Dirt",
+                        frequency: 100,
+                        min: 15,
+                        max: 23
+                    },
+                    {
+                        name: "Pebble",
+                        frequency: 100,
+                        min: 3,
+                        max: 8
+                    }
+                ]
+            },
+            {
+                name: "Patch of Clay",
+                type: "digging",
+                chances: 65,
+                durability: 100,
+                loot: [
+                    {
+                        name: "Clay",
+                        frequency: 100,
+                        min: 15,
+                        max: 23
+                    }
+                ]
+            }
+        ],
     }
 ];
