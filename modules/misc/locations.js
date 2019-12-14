@@ -110,5 +110,78 @@ module.exports = [
                 ]
             }
         ]
+    },
+    {
+        name: "Mines",
+        channel: "648804143196274700",
+        imageColors: {
+            main: "#3f6040",
+            accent: "#8baf70",
+            droppedItemSlotBG: "#7e402b",
+            droppedItemSlotBorder: "#e03131",
+            whiteText: true
+        },
+        areas: [
+            {
+                name: "Stone",
+                type: "mining",
+                chances: 100,
+                durability: 100,
+                loot: [
+                    {
+                        name: "Stone",
+                        frequency: 100,
+                        min: 10,
+                        max: 16
+                    },
+                    {
+                        name: "Pebble",
+                        frequency: 100,
+                        min: 4,
+                        max: 11
+                    }
+                ]
+            },
+            {
+                name: "Patch of Dirt",
+                type: "digging",
+                chances: 35,
+                durability: 100,
+                loot: [
+                    {
+                        name: "Dirt",
+                        frequency: 100,
+                        min: 15,
+                        max: 23
+                    },
+                    {
+                        name: "Pebble",
+                        frequency: 100,
+                        min: 3,
+                        max: 8
+                    }
+                ]
+            },
+            {
+                name: "Coal Vein",
+                type: "mining",
+                chances: 20,
+                durability: 150,
+                loot: [
+                    {
+                        name: "Stone",
+                        frequency: 100,
+                        min: 10,
+                        max: 16
+                    },
+                    {
+                        name: "Pebble",
+                        frequency: 100,
+                        min: 4,
+                        max: 11
+                    }
+                ]
+            }
+        ]
     }
 ];
