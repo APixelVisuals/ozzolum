@@ -169,16 +169,22 @@ module.exports = [
                 durability: 150,
                 loot: [
                     {
-                        name: "Stone",
+                        name: "Coal",
                         frequency: 100,
                         min: 10,
                         max: 16
                     },
                     {
-                        name: "Pebble",
+                        name: "Stone",
                         frequency: 100,
                         min: 4,
                         max: 11
+                    },
+                    {
+                        name: "Pebble",
+                        frequency: 100,
+                        min: 2,
+                        max: 7
                     }
                 ]
             }
