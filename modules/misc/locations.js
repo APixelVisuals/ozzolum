@@ -76,7 +76,7 @@ module.exports = [
                 ]
             },
             {
-                name: "Patch of Dirt",
+                name: "Dirt Patch",
                 type: "digging",
                 chances: 100,
                 durability: 100,
@@ -96,7 +96,7 @@ module.exports = [
                 ]
             },
             {
-                name: "Patch of Clay",
+                name: "Clay Patch",
                 type: "digging",
                 chances: 65,
                 durability: 100,
@@ -143,7 +143,7 @@ module.exports = [
                 ]
             },
             {
-                name: "Patch of Dirt",
+                name: "Dirt Patch",
                 type: "digging",
                 chances: 35,
                 durability: 100,
