@@ -30,6 +30,11 @@ module.exports = [
         tags: ["rock", "stone"]
     },
     {
+        name: "Coal",
+        type: "Crafting Ingredient",
+        tags: []
+    },
+    {
         name: "Leather Satchel",
         type: "Storage Unit",
         tags: ["backpack", "bag"],
