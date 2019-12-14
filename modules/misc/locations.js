@@ -1,10 +1,12 @@
 /*
  *  name: The location name
  *  channel: The channel ID of the location
- *  imageItemSlots:
- *      bgColor: The color of the item slot background
- *      borderColor: The color of the item slot border
- *      whiteText?: Whether the text color of item images should be white or not
+ *  imageColors:
+ *      main: The main color
+ *      accent: The accent color
+ *      droppedItemSlotBG: The background color of item slots for dropped items
+ *      droppedItemSlotBorder: The border color of item slots for dropped items
+ *      whiteText?: Whether or not the text color should be white
  *  areas: Areas you can find when exploring
  *      name: The area name
  *      type: The gathering type
@@ -25,11 +27,11 @@ module.exports = [
     {
         name: "Forest",
         channel: "648803120830480384",
-        imageItemSlots: {
-            bgColor: "#3f6040",
-            borderColor: "#8baf70",
-            droppedBGColor: "#7e402b",
-            droppedBorderColor: "#e03131",
+        imageColors: {
+            main: "#3f6040",
+            accent: "#8baf70",
+            droppedItemSlotBG: "#7e402b",
+            droppedItemSlotBorder: "#e03131",
             whiteText: true
         },
         areas: [

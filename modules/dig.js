@@ -62,7 +62,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
         //Stats
         await util.stats(_, "Ground Dug");
     }
-    else image = imageGenerators.gathering(_, message.author, location.name, player.explore.area.name, "Digging", { amount: player.explore.area.durability, maxAmount: area.durability }, damage);
+    else image = imageGenerators.gathering(_, message.author, location, player.explore.area.name, "Digging", { amount: player.explore.area.durability, maxAmount: area.durability }, damage);
 
     //Embed
     const embed = new Discord.RichEmbed()

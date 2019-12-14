@@ -1,21 +1,24 @@
 module.exports = async ({ classes, _ }, user, location, area, skill, durability, damage) => {
 
     //Create image
-    const image = new classes.Image(_, `assets/backgrounds/locations/${location} Small.png`);
+    const image = new classes.Image(_, `assets/backgrounds/locations/${location.name} Small.png`);
+
+    //Get colors
+    const colors = location.imageColors;
 
     //Add username + discriminator
     const username = image.text({
         text: user.username,
         font: "Roboto/Black.ttf",
         fontSize: 100,
-        color: "#8baf70"
+        color: colors.accent
     });
 
     const discriminator = image.text({
         text: `#${user.discriminator}`,
         font: "Roboto/Black.ttf",
         fontSize: 35,
-        color: "#8baf70"
+        color: colors.accent
     });
 
     image.composite(username.image, 960 - (((username.width + discriminator.width) + 170 + 15 + 5) / 2) + 170 + 15, 300);
@@ -25,7 +28,7 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
     //Add avatar border
     image.circle({
         diameter: 170,
-        color: "#8baf70",
+        color: colors.accent,
         x: 960 - (((username.width + discriminator.width) + 170 + 15) / 2),
         y: 247
     });
@@ -55,17 +58,17 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
         text: skill,
         font: "Roboto/Medium.ttf",
         fontSize: 45,
-        color: "#8baf70",
+        color: colors.accent,
         x: 517,
         y: 553
     });
 
     //Add location
     const locationText = image.text({
-        text: location,
+        text: location.name,
         font: "Roboto/Medium.ttf",
         fontSize: 45,
-        color: "#8baf70"
+        color: colors.accent
     });
 
     image.composite(locationText.image, (1414 - locationText.width), 553);
@@ -75,7 +78,7 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
         text: area,
         font: "Roboto/Medium.ttf",
         fontSize: 35,
-        color: "#8baf70",
+        color: colors.accent,
         x: 517,
         y: 676
     });
@@ -85,7 +88,7 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
         text: `${durability.amount}/${durability.maxAmount} Durability`,
         font: "Roboto/Medium.ttf",
         fontSize: 35,
-        color: "#8baf70"
+        color: colors.accent
     });
 
     image.composite(durabilityText.image, (1414 - durabilityText.width), 676);
@@ -96,7 +99,7 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
             text: `-${damage} Durability`,
             font: "Roboto/Italic.ttf",
             fontSize: 35,
-            color: "#8baf70"
+            color: colors.accent
         });
 
         image.composite(damageText.image, 960 - (damageText.width / 2), 750);
