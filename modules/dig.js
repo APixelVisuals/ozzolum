@@ -28,7 +28,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
 
     //Get tool data
     const tool = util.items.find(i => i.name === player.digging.tool);
-    if (!tool) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have an Shovel equipped!**`);
+    if (!tool) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have a Shovel equipped!**`);
 
     //Cooldown not done
     if ((player.digging.cooldown) && (player.digging.cooldown > Date.now())) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can't dig for another ${Math.ceil((player.digging.cooldown - Date.now()) / 1000)} seconds!**`);
