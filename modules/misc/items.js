@@ -25,6 +25,11 @@ module.exports = [
         tags: ["earth", "ground"]
     },
     {
+        name: "Stone",
+        type: "Material",
+        tags: ["rock"]
+    },
+    {
         name: "Pebble",
         type: "Crafting Ingredient",
         tags: ["rock", "stone"]
