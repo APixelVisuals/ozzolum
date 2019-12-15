@@ -15,6 +15,7 @@ module.exports = async ({ client, util, _ }, message) => {
     else if (["axe", "hatchet"].includes(type)) type = "chopping";
     else if (["pickaxe", "pick"].includes(type)) type = "mining";
     else if (["shovel"].includes(type)) type = "digging";
+    else if (["shears"].includes(type)) type = "foraging";
     else if (["fishingrod", "fishingpole"].includes(type)) type = "fishing";
     else return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, That item type doesn't exist!**`);
 
@@ -24,6 +25,7 @@ module.exports = async ({ client, util, _ }, message) => {
         chopping: "an Axe",
         mining: "a Pickaxe",
         digging: "a Shovel",
+        foraging: "any Shears",
         fishing: "a Fishing Rod"
     }[type]} equipped!**`);
 

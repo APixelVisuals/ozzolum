@@ -24,6 +24,7 @@ module.exports = class Player {
         this.chopping = this.data.chopping.toObject();
         this.mining = this.data.mining.toObject();
         this.digging = this.data.digging.toObject();
+        this.foraging = this.data.foraging.toObject();
         this.fishing = this.data.fishing.toObject();
         this.ozzolites = this.data.ozzolites;
         this.stats = this.data.stats;
@@ -76,6 +77,7 @@ module.exports = class Player {
             { name: "Chopping", ...this.chopping },
             { name: "Mining", ...this.mining },
             { name: "Digging", ...this.digging },
+            { name: "Foraging", ...this.foraging },
             this.hasUnlock("fishing") && { name: "Fishing", ...this.fishing }
         ].filter(s => s));
     }
@@ -109,6 +111,7 @@ module.exports = class Player {
         this.data.chopping = this.chopping;
         this.data.mining = this.mining;
         this.data.digging = this.digging;
+        this.data.foraging = this.foraging;
         this.data.fishing = this.fishing;
         this.data.ozzolites = this.ozzolites;
         this.data.stats = this.stats;

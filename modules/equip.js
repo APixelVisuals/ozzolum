@@ -25,5 +25,5 @@ module.exports = async ({ client, util, _ }, message) => {
     player[item.equipType].tool = item.name;
 
     //Send
-    message.channel.send(`${client.ozzolumEmojis["checkmark"]}  **|  ${message.author}, You've equipped a ${item.name}!**`);
+    message.channel.send(`${client.ozzolumEmojis["checkmark"]}  **|  ${message.author}, You've equipped the ${item.name}!**`);
 };

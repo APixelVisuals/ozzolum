@@ -52,6 +52,7 @@ module.exports = async ({ classes, _ }, user, skillData) => {
             Chopping: "Axe",
             Mining: "Pickaxe",
             Digging: "Shovel",
+            Foraging: "Shears",
             Fishing: "FishingRod",
         }[s.name]}.png`, 77 + OFFSET_X, 524 + OFFSET_Y);
 

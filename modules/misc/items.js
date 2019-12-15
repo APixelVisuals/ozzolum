@@ -88,5 +88,11 @@ module.exports = [
         equipType: "digging",
         minDamage: 5,
         maxDamage: 8
+    },
+    {
+        name: "Stone Shears",
+        type: "Shears",
+        tags: [],
+        equipType: "foraging"
     }
 ];

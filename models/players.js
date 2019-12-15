@@ -99,6 +99,22 @@ module.exports = {
             default: 0
         }
     },
+    foraging: {
+        tool: String,
+        cooldown: Number,
+        xp: {
+            type: Number,
+            default: 0
+        },
+        totalXP: {
+            type: Number,
+            default: 0
+        },
+        level: {
+            type: Number,
+            default: 0
+        }
+    },
     fishing: {
         tool: String,
         cooldown: Number,

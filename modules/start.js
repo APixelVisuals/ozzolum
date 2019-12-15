@@ -13,7 +13,8 @@ module.exports = async ({ client, imageGenerators, util, models, Discord, loadin
         fighting: { tool: "Stone Dagger" },
         chopping: { tool: "Stone Hatchet" },
         mining: { tool: "Stone Pickaxe" },
-        digging: { tool: "Stone Shovel" }
+        digging: { tool: "Stone Shovel" },
+        foraging: { tool: "Stone Shears" }
     });
 
     await models.homeInvs.create({ _id: message.author.id });
