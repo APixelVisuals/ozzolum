@@ -115,10 +115,10 @@ module.exports = [
         name: "Mines",
         channel: "648804143196274700",
         imageColors: {
-            main: "#3f6040",
-            accent: "#8baf70",
-            droppedItemSlotBG: "#7e402b",
-            droppedItemSlotBorder: "#e03131",
+            main: "#3b3b3b",
+            accent: "#676767",
+            droppedItemSlotBG: "#763a3a",
+            droppedItemSlotBorder: "#f14545",
             whiteText: true
         },
         areas: [
