@@ -21,7 +21,9 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     //Cant dig here
     if (area.type !== "digging") return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can only ${{
         chopping: "chop",
-        digging: "dig"
+        mining: "mine",
+        digging: "dig",
+        foraging: "forage"
     }[area.type]} in this area!**`);
 
     //Get tool data
