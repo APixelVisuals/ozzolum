@@ -86,6 +86,13 @@ module.exports = [
         usage: "chop",
     },
     {
+        file: "mine",
+        name: "Mine",
+        inputs: ["mine"],
+        type: "basic",
+        usage: "mine",
+    },
+    {
         file: "dig",
         name: "Dig",
         inputs: ["dig"],
