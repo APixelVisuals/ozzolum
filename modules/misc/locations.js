@@ -4,6 +4,7 @@
  *  imageColors:
  *      main: The main color
  *      accent: The accent color
+ *      progressBarFill: The color of progress bar fills
  *      droppedItemSlotBG: The background color of item slots for dropped items
  *      droppedItemSlotBorder: The border color of item slots for dropped items
  *      whiteText?: Whether or not the text color should be white
@@ -30,6 +31,7 @@ module.exports = [
         imageColors: {
             main: "#3f6040",
             accent: "#8baf70",
+            progressBarFill: "#d0efb1",
             droppedItemSlotBG: "#7e402b",
             droppedItemSlotBorder: "#e03131",
             whiteText: true
@@ -117,6 +119,7 @@ module.exports = [
         imageColors: {
             main: "#3b3b3b",
             accent: "#676767",
+            progressBarFill: "#9f9f9f",
             droppedItemSlotBG: "#763a3a",
             droppedItemSlotBorder: "#f14545",
             whiteText: true

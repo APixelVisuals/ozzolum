@@ -48,7 +48,7 @@ module.exports = async ({ classes, _ }, user, location, skill, loot, xpGain) => 
         height: 40,
         amount: skill.xp,
         maxAmount: (skill.level * 50) + 50,
-        color: "#d0efb1",
+        color: colors.progressBarFill,
         x: 509,
         y: 611
     });

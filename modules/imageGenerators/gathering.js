@@ -48,7 +48,7 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
         height: 40,
         amount: durability.amount,
         maxAmount: durability.maxAmount,
-        color: "#d0efb1",
+        color: colors.progressBarFill,
         x: 509,
         y: 611
     });
