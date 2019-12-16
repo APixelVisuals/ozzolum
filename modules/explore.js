@@ -25,8 +25,9 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     player.explore.lastCooldown = player.explore.lastCooldown ? (cooldowns[cooldowns.indexOf(player.explore.lastCooldown) + 1] || cooldowns[cooldowns.length - 1]) : cooldowns[0];
     player.explore.cooldown = Date.now() + player.explore.lastCooldown;
 
-    //Set location
+    //Set data
     player.explore.location = location.name;
+    player.explore.area = {};
 
     //Find areas
     const areas = location.areas.filter(a => (Math.floor(Math.random() * 99) + 1) < a.frequency);
