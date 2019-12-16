@@ -30,6 +30,7 @@ module.exports = {
     unlocks: [String],
     explore: {
         location: String,
+        foundAreas: [String],
         area: {
             name: String,
             durability: Number

@@ -24,13 +24,8 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     player.explore.location = location.name;
 
     //Find area
-    const totalChances = location.areas.reduce((t, a) => t + a.chances, 0);
-    const chance = Math.floor(Math.random() * (totalChances - 1)) + 1;
-    const areaChances = [];
-    location.areas.forEach(a => areaChances.push({ area: a, value: (areaChances[areaChances.length - 1] ? areaChances[areaChances.length - 1].value : 0) + a.chances }));
-    const area = areaChances.find(a => chance < a.value).area;
-    player.explore.area.name = area.name;
-    if (area.type !== "foraging") player.explore.area.durability = area.durability;
+    const areas = location.areas.filter(a => (Math.floor(Math.random() * 99) + 1) < a.frequency);
+    player.explore.foundAreas = areas.map(a => a.name);
 
     //Embed
     const embed = new Discord.RichEmbed()
@@ -41,9 +36,9 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     //Send
     const m = await message.channel.send(embed);
 
-    //Generate gathering image
-    m.edit(embed.setImage(await imageGenerators[area.type === "foraging" ? "gatheringForaging" : "gathering"](_, message.author, location, area, `${area.type.charAt(0).toUpperCase()}${area.type.substring(1)}`, { amount: player.explore.area.durability, maxAmount: player.explore.area.durability })));
+    //Generate exploring image
+    m.edit(embed.setImage(await imageGenerators.exploring(_, message.author, location, areas)));
 
     //Stats
-    await util.stats(_, "Areas Found");
+    await util.stats(_, "Explorations");
 };

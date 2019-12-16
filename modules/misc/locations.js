@@ -11,7 +11,7 @@
  *  areas: Areas you can find when exploring
  *      name: The area name
  *      type: The gathering type
- *      chances: The chances that the player will find this area
+ *      frequency: The % chance that the player will find this area
  *      durability: How much damage this can take before breaking
  *      primaryLoot: The main item you can get from this area
  *      loot:
@@ -41,7 +41,7 @@ module.exports = [
             {
                 name: "Oak Tree",
                 type: "chopping",
-                chances: 100,
+                frequency: 100,
                 durability: 100,
                 primaryLoot: "Oak Log",
                 loot: [
@@ -62,7 +62,7 @@ module.exports = [
             {
                 name: "Hickory Tree",
                 type: "chopping",
-                chances: 75,
+                frequency: 75,
                 durability: 100,
                 primaryLoot: "Hickory Log",
                 loot: [
@@ -83,7 +83,7 @@ module.exports = [
             {
                 name: "Dirt Patch",
                 type: "digging",
-                chances: 100,
+                frequency: 100,
                 durability: 100,
                 primaryLoot: "Dirt",
                 loot: [
@@ -104,7 +104,7 @@ module.exports = [
             {
                 name: "Clay Patch",
                 type: "digging",
-                chances: 65,
+                frequency: 35,
                 durability: 100,
                 primaryLoot: "Clay",
                 loot: [
@@ -119,7 +119,7 @@ module.exports = [
             {
                 name: "Wild Berry Bush",
                 type: "foraging",
-                chances: 45,
+                frequency: 75,
                 primaryLoot: "Wild Berries",
                 loot: [
                     {
@@ -147,7 +147,7 @@ module.exports = [
             {
                 name: "Stone",
                 type: "mining",
-                chances: 100,
+                frequency: 100,
                 durability: 100,
                 primaryLoot: "Stone",
                 loot: [
@@ -168,7 +168,7 @@ module.exports = [
             {
                 name: "Dirt Patch",
                 type: "digging",
-                chances: 35,
+                frequency: 20,
                 durability: 100,
                 primaryLoot: "Dirt",
                 loot: [
@@ -189,7 +189,7 @@ module.exports = [
             {
                 name: "Coal Vein",
                 type: "mining",
-                chances: 20,
+                frequency: 20,
                 durability: 150,
                 primaryLoot: "Coal",
                 loot: [

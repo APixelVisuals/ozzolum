@@ -79,6 +79,13 @@ module.exports = [
         usage: "explore",
     },
     {
+        file: "go",
+        name: "Go",
+        inputs: ["go"],
+        type: "basic",
+        usage: "go <Area>",
+    },
+    {
         file: "chop",
         name: "Chop",
         inputs: ["chop"],
