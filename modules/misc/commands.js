@@ -100,6 +100,13 @@ module.exports = [
         usage: "dig",
     },
     {
+        file: "forage",
+        name: "Forage",
+        inputs: ["forage"],
+        type: "basic",
+        usage: "forage",
+    },
+    {
         file: "eval",
         name: "Eval",
         ownerOnly: true,
