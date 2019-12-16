@@ -58,6 +58,10 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
         //Remove area
         player.explore.area = {};
 
+        //Remove explore cooldown
+        player.explore.cooldown = undefined;
+        player.explore.lastCooldown = undefined;
+
         //Generate image
         image = imageGenerators.gatheringLoot(_, message.author, location, { name: "Digging", ...player.digging }, result.added.concat(result.dropped), xpGain);
 

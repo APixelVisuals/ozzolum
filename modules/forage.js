@@ -50,6 +50,10 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     //Remove area
     player.explore.area = {};
 
+    //Remove explore cooldown
+    player.explore.cooldown = undefined;
+    player.explore.lastCooldown = undefined;
+
     //Stats
     await util.stats(_, "Things Foraged");
 

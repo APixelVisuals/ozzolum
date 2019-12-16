@@ -15,10 +15,15 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     if ((player.explore.location) && (player.explore.location !== location.name)) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You're exploring in ${client.channels.get(util.locations.find(l => l.name === player.explore.location).channel)}!**`);
 
     //Cooldown not done
-    if ((player.explore.cooldown) && (player.explore.cooldown > Date.now())) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can't explore for another ${Math.ceil((player.explore.cooldown - Date.now()) / 1000)} seconds!**`);
+    if ((player.explore.cooldown) && (player.explore.cooldown > Date.now())) {
+        const cooldown = (player.explore.cooldown - Date.now()) / 1000;
+        return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can't explore for another ${Math.floor(cooldown / 60)} minutes, and ${Math.floor(cooldown % 60)} seconds!**`);
+    }
 
     //Set cooldown
-    player.explore.cooldown = Date.now() + 15000;
+    const cooldowns = [15000, 300000, 900000, 3600000];
+    player.explore.lastCooldown = player.explore.lastCooldown ? (cooldowns[cooldowns.indexOf(player.explore.lastCooldown) + 1] || cooldowns[cooldowns.length - 1]) : cooldowns[0];
+    player.explore.cooldown = Date.now() + player.explore.lastCooldown;
 
     //Set location
     player.explore.location = location.name;
