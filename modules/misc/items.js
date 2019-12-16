@@ -40,6 +40,11 @@ module.exports = [
         tags: []
     },
     {
+        name: "Wild Berries",
+        type: "Food",
+        tags: ["berry"]
+    },
+    {
         name: "Leather Satchel",
         type: "Storage Unit",
         tags: ["backpack", "bag"],
