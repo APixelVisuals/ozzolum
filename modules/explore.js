@@ -42,7 +42,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     const m = await message.channel.send(embed);
 
     //Generate gathering image
-    m.edit(embed.setImage(await imageGenerators.gathering(_, message.author, location, player.explore.area.name, `${area.type.charAt(0).toUpperCase()}${area.type.substring(1)}`, { amount: player.explore.area.durability, maxAmount: player.explore.area.durability })));
+    m.edit(embed.setImage(await imageGenerators.gathering(_, message.author, location, area, `${area.type.charAt(0).toUpperCase()}${area.type.substring(1)}`, { amount: player.explore.area.durability, maxAmount: player.explore.area.durability })));
 
     //Stats
     await util.stats(_, "Areas Found");

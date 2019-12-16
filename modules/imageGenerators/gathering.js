@@ -42,6 +42,9 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
         y: 257
     });
 
+    //Add item
+    image.composite(`assets/items/128x128/${area.primaryLoot}.png`, 361, 568);
+
     //Add durability bar
     image.progressBar({
         width: 924,
@@ -49,7 +52,7 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
         amount: durability.amount,
         maxAmount: durability.maxAmount,
         color: colors.progressBarFill,
-        x: 509,
+        x: 579,
         y: 611
     });
 
@@ -59,7 +62,7 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
         font: "Roboto/Medium.ttf",
         fontSize: 45,
         color: colors.accent,
-        x: 517,
+        x: 587,
         y: 553
     });
 
@@ -71,15 +74,15 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
         color: colors.accent
     });
 
-    image.composite(locationText.image, (1414 - locationText.width), 553);
+    image.composite(locationText.image, (1484 - locationText.width), 553);
 
     //Add area
     image.text({
-        text: area,
+        text: area.name,
         font: "Roboto/Medium.ttf",
         fontSize: 35,
         color: colors.accent,
-        x: 517,
+        x: 587,
         y: 676
     });
 
@@ -91,7 +94,7 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
         color: colors.accent
     });
 
-    image.composite(durabilityText.image, (1414 - durabilityText.width), 676);
+    image.composite(durabilityText.image, (1484 - durabilityText.width), 676);
 
     //Add damage
     if (damage) {
@@ -102,7 +105,7 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
             color: colors.accent
         });
 
-        image.composite(damageText.image, 960 - (damageText.width / 2), 750);
+        image.composite(damageText.image, 1030 - (damageText.width / 2), 750);
     }
 
     //Render + return
