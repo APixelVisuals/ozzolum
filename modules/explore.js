@@ -28,7 +28,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     //Set location
     player.explore.location = location.name;
 
-    //Find area
+    //Find areas
     const areas = location.areas.filter(a => (Math.floor(Math.random() * 99) + 1) < a.frequency);
     player.explore.foundAreas = areas.map(a => a.name);
 
