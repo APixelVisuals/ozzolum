@@ -13,6 +13,7 @@
  *      type: The gathering type
  *      chances: The chances that the player will find this area
  *      durability: How much damage this can take before breaking
+ *      primaryLoot: The main item you can get from this area
  *      loot:
  *          name: The item name
  *          frequency: The % chance that the player will get any amount of this item
@@ -42,6 +43,7 @@ module.exports = [
                 type: "chopping",
                 chances: 100,
                 durability: 100,
+                primaryLoot: "Oak Log",
                 loot: [
                     {
                         name: "Oak Log",
@@ -62,6 +64,7 @@ module.exports = [
                 type: "chopping",
                 chances: 75,
                 durability: 100,
+                primaryLoot: "Hickory Log",
                 loot: [
                     {
                         name: "Hickory Log",
@@ -82,6 +85,7 @@ module.exports = [
                 type: "digging",
                 chances: 100,
                 durability: 100,
+                primaryLoot: "Dirt",
                 loot: [
                     {
                         name: "Dirt",
@@ -102,6 +106,7 @@ module.exports = [
                 type: "digging",
                 chances: 65,
                 durability: 100,
+                primaryLoot: "Clay",
                 loot: [
                     {
                         name: "Clay",
@@ -130,6 +135,7 @@ module.exports = [
                 type: "mining",
                 chances: 100,
                 durability: 100,
+                primaryLoot: "Stone",
                 loot: [
                     {
                         name: "Stone",
@@ -150,6 +156,7 @@ module.exports = [
                 type: "digging",
                 chances: 35,
                 durability: 100,
+                primaryLoot: "Dirt",
                 loot: [
                     {
                         name: "Dirt",
@@ -170,6 +177,7 @@ module.exports = [
                 type: "mining",
                 chances: 20,
                 durability: 150,
+                primaryLoot: "Coal",
                 loot: [
                     {
                         name: "Coal",
