@@ -115,6 +115,20 @@ module.exports = [
                         max: 23
                     }
                 ]
+            },
+            {
+                name: "Wild Berry Bush",
+                type: "foraging",
+                chances: 45,
+                primaryLoot: "Wild Berries",
+                loot: [
+                    {
+                        name: "Wild Berries",
+                        frequency: 100,
+                        min: 4,
+                        max: 8
+                    }
+                ]
             }
         ]
     },
