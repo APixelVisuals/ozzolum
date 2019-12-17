@@ -86,6 +86,13 @@ module.exports = [
         usage: "go <Area>",
     },
     {
+        file: "leave",
+        name: "Leave",
+        inputs: ["leave"],
+        type: "basic",
+        usage: "leave",
+    },
+    {
         file: "chop",
         name: "Chop",
         inputs: ["chop"],
