@@ -50,6 +50,9 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     //Remove area
     player.explore.area = {};
 
+    //Set foraging cooldown
+    if (player.explore.cooldown > Date.now()) player.explore.foragingCooldown = Date.now() + (player.explore.cooldown - Date.now());
+
     //Remove explore cooldown
     player.explore.cooldown = undefined;
     player.explore.lastCooldown = undefined;

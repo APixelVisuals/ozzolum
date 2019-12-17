@@ -36,7 +36,8 @@ module.exports = {
             durability: Number
         },
         cooldown: Number,
-        lastCooldown: Number
+        lastCooldown: Number,
+        foragingCooldown: Number
     },
     fighting: {
         tool: String,

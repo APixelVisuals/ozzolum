@@ -30,7 +30,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, loadingImage, 
     player.explore.area = {};
 
     //Find areas
-    const areas = location.areas.filter(a => (Math.floor(Math.random() * 99) + 1) < a.frequency);
+    const areas = location.areas.filter(a => ((Math.floor(Math.random() * 99) + 1) < a.frequency) && (((!player.explore.foragingCooldown) || (player.explore.foragingCooldown <= Date.now())) || (a.type !== "foraging")));
     player.explore.foundAreas = areas.map(a => a.name);
 
     //Embed
