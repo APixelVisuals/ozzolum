@@ -12,6 +12,9 @@ module.exports = async ({ client, util, _ }, message) => {
 
     //Get item
     item = util.searchItems(_, item);
+    if (!item) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, That item doesn't exist!**`);
+
+    //Dont have item
     if (!player.inv.hasItems(item.name)) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have that item!**`);
 
     //Not equippable
