@@ -1,4 +1,4 @@
-module.exports = async ({ client, util, classes, models, Discord, loadingImage, simulatedChannel, _ }, message) => {
+module.exports = async ({ client, util, classes, models, Discord, simulatedChannel, _ }, message) => {
 
     //Cooldown
     if (!util.cooldown(_, message)) return new Error("Cooldown not done");
@@ -43,7 +43,7 @@ module.exports = async ({ client, util, classes, models, Discord, loadingImage, 
     const embed = new Discord.RichEmbed()
         .setAuthor(`${target.tag}'s Home's Inventory`, target.displayAvatarURL)
         .setColor(await util.getColor(_, target.displayAvatarURL))
-        .setImage(loadingImage);
+        .setImage("https://ozzolum.apixel.me/static/loading.gif");
 
     //Send
     const m = await message.channel.send(embed);

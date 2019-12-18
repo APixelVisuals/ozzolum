@@ -1,4 +1,4 @@
-module.exports = async ({ client, imageGenerators, util, models, Discord, loadingImage, _ }, message) => {
+module.exports = async ({ client, imageGenerators, util, models, Discord, _ }, message) => {
 
     //Cooldown
     if (!util.cooldown(_, message)) return new Error("Cooldown not done");
@@ -26,7 +26,7 @@ module.exports = async ({ client, imageGenerators, util, models, Discord, loadin
         .setColor(util.colors.ozzolum)
         .addField("Commands", "View a list of commands by saying `o!help`")
         .addField("Quests", "Quests will guide you through the game. You can view your Quests by saying `o!quests`")
-        .setImage(loadingImage);
+        .setImage("https://ozzolum.apixel.me/static/loading.gif");
 
     //Send
     const m = await message.channel.send(embed);
