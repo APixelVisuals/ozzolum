@@ -9,10 +9,10 @@ module.exports = async ({ client, util, simulatedChannel, _ }, message) => {
     if (!location) return;
 
     //Not exploring
-    if (!player.explore.location) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You're not exploring!**`);
+    if (!player.explore.location) return util.error(_, message, "You're not exploring!", "not exploring");
 
     //Not exploring here
-    if (player.explore.location !== location.name) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You're exploring in ${client.channels.get(util.locations.find(l => l.name === player.explore.location).channel)}!**`);
+    if (player.explore.location !== location.name) return util.error(_, message, `You're exploring in ${client.channels.get(util.locations.find(l => l.name === player.explore.location).channel)}!`);
 
     //Set data
     player.explore.location = undefined;

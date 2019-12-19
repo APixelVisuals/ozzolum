@@ -21,20 +21,20 @@ module.exports = async ({ client, util, classes, models, Discord, simulatedChann
     if (!location) return;
 
     //Location isnt home
-    if (location.name !== "Home") return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can only view your Home Inventory in ${client.channels.get(util.locations.find(l => l.name === "Home").channel)}!**`);
+    if (location.name !== "Home") return util.error(_, message, `You can only view your Home Inventory in ${client.channels.get(util.locations.find(l => l.name === "Home").channel)}!`);
 
     //Parse params
     target = client.users.get(target);
 
     //No user
-    if (!target) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, I couldn't find that user!**`);
+    if (!target) return util.error(_, message, "I couldn't find that user!");
 
     //Invalid page number
     if ((page < 1) || (isNaN(page))) page = 1;
 
     //Get home inv data
     const homeInvData = await models.homeInvs.findById(target.id);
-    if (!homeInvData) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, That person hasn't started a game!**`);
+    if (!homeInvData) return util.error(_, message, "That person hasn't started a game!");
 
     //Create inventory
     const homeInv = new classes.Inventory(_, homeInvData.inv.toObject());

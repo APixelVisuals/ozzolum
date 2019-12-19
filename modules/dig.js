@@ -9,29 +9,29 @@ module.exports = async ({ client, imageGenerators, util, Discord, simulatedChann
     if (!location) return;
 
     //Not exploring
-    if (!player.explore.location) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You're not exploring!**`);
+    if (!player.explore.location) return util.error(_, message, "You're not exploring!", "not exploring");
 
     //Not exploring here
-    if (player.explore.location !== location.name) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You're exploring in ${client.channels.get(util.locations.find(l => l.name === player.explore.location).channel)}!**`);
+    if (player.explore.location !== location.name) return util.error(_, message, `You're exploring in ${client.channels.get(util.locations.find(l => l.name === player.explore.location).channel)}!`, "not exploring here");
 
     //Get area data
     const area = location.areas.find(a => a.name === player.explore.area.name);
-    if (!area) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You haven't found an area!**`);
+    if (!area) return util.error(_, message, "You haven't found an area!", "no area found");
 
     //Cant dig here
-    if (area.type !== "digging") return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can only ${{
+    if (area.type !== "digging") return util.error(_, message, `You can only ${{
         chopping: "chop",
         mining: "mine",
         digging: "dig",
         foraging: "forage"
-    }[area.type]} in this area!**`);
+    }[area.type]} in this area!`);
 
     //Get tool data
     const tool = util.items.find(i => i.name === player.digging.tool);
-    if (!tool) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have a Shovel equipped!**`);
+    if (!tool) return util.error(_, message, "You don't have a Shovel equipped!", "no tool equipped");
 
     //Cooldown not done
-    if ((player.digging.cooldown) && (player.digging.cooldown > Date.now())) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can't dig for another ${Math.ceil((player.digging.cooldown - Date.now()) / 1000)} seconds!**`);
+    if ((player.digging.cooldown) && (player.digging.cooldown > Date.now())) return util.error(_, message, `You can't dig for another ${Math.ceil((player.digging.cooldown - Date.now()) / 1000)} seconds!`);
 
     //Set cooldown
     player.digging.cooldown = Date.now() + 10000;

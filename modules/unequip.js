@@ -8,7 +8,7 @@ module.exports = async ({ client, util, _ }, message) => {
     let type = message.content.split(" ").slice(1).join(" ").toLowerCase().replace(/\s+/g, "");
 
     //No type
-    if (!type) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, What type of item would you like to unequip?**`);
+    if (!type) return util.error(_, message, "What type of item would you like to unequip?", "what to unequip");
 
     //Parse type
     if (["weapon", "sword"].includes(type)) type = "fighting";
@@ -17,24 +17,24 @@ module.exports = async ({ client, util, _ }, message) => {
     else if (["shovel"].includes(type)) type = "digging";
     else if (["shears"].includes(type)) type = "foraging";
     else if (["fishingrod", "fishingpole"].includes(type)) type = "fishing";
-    else return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, That item type doesn't exist!**`);
+    else return util.error(_, message, "That item type doesn't exist!", "what to unequip");
 
     //Not equipped
-    if (!player[type].tool) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have ${{
+    if (!player[type].tool) return util.error(_, message, `You don't have ${{
         fighting: "a Weapon",
         chopping: "an Axe",
         mining: "a Pickaxe",
         digging: "a Shovel",
         foraging: "any Shears",
         fishing: "a Fishing Rod"
-    }[type]} equipped!**`);
+    }[type]} equipped!`);
 
     //Get item
     const item = player[type].tool;
 
     //Add to inv
     const { dropped } = player.inv.addItems(item);
-    if (dropped.length) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, Your inventory is full!**`);
+    if (dropped.length) return util.error(_, message, "Your inventory is full!", "no inv space");
 
     //Unequip
     player[type].tool = undefined;

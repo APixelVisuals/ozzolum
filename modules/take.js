@@ -23,14 +23,14 @@ module.exports = async ({ client, util, classes, models, simulatedChannel, _ }, 
     if (!location) return;
 
     //Location isnt home
-    if (location.name !== "Home") return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can only take items from your Home Inventory in ${client.channels.get(util.locations.find(l => l.name === "Home").channel)}!**`);
+    if (location.name !== "Home") return util.error(_, message, `You can only take items from your Home Inventory in ${client.channels.get(util.locations.find(l => l.name === "Home").channel)}!`);
 
     //No item
-    if (!item) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, What would you like to take from your Home Inventory?**`);
+    if (!item) return util.error(_, message, "What would you like to take from your Home Inventory?", "check home inv items");
 
     //Get item
     item = util.searchItems(_, item);
-    if (!item) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, That item doesn't exist!**`);
+    if (!item) return util.error(_, message, "That item doesn't exist!");
 
     //Create home inventory
     const homeData = await models.homeInvs.findById(message.author.id);
@@ -38,7 +38,7 @@ module.exports = async ({ client, util, classes, models, simulatedChannel, _ }, 
 
     //Not enough items
     const missing = homeInv.hasItems({ name: item.name, amount }, true);
-    if (missing.length) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You ${amount === missing[0].amount ? "don't have any" : `only have ${amount - missing[0].amount}`} ${item.name} in your Home Inventory!**`);
+    if (missing.length) return util.error(_, message, `You ${amount === missing[0].amount ? "don't have any" : `only have ${amount - missing[0].amount}`} ${item.name} in your Home Inventory!`, "check home inv items");
 
     //Move items
     const updated = util.updateItems({
@@ -51,7 +51,7 @@ module.exports = async ({ client, util, classes, models, simulatedChannel, _ }, 
             items: { name: item.name, amount }
         }
     });
-    if (!updated) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You don't have enough space in your Inventory!**`);
+    if (!updated) return util.error(_, message, "You don't have enough space in your Inventory!");
 
     //Save
     homeData.inv = homeInv.getData();

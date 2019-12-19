@@ -9,15 +9,15 @@ module.exports = async ({ client, imageGenerators, util, Discord, simulatedChann
     if (!location) return;
 
     //Not a location for exploring
-    if (!location.areas) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can't explore here!**`);
+    if (!location.areas) return util.error(_, message, "You can't explore here!", "cant explore here");
 
     //Not exploring here
-    if ((player.explore.location) && (player.explore.location !== location.name)) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You're exploring in ${client.channels.get(util.locations.find(l => l.name === player.explore.location).channel)}!**`);
+    if ((player.explore.location) && (player.explore.location !== location.name)) return util.error(_, message, `You're exploring in ${client.channels.get(util.locations.find(l => l.name === player.explore.location).channel)}!`, "not exploring here");
 
     //Cooldown not done
     if ((player.explore.cooldown) && (player.explore.cooldown > Date.now())) {
         const cooldown = (player.explore.cooldown - Date.now()) / 1000;
-        return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You can't explore for another ${Math.floor(cooldown / 60)} minutes, and ${Math.floor(cooldown % 60)} seconds!**`);
+        return util.error(_, message, `You can't explore for another ${Math.floor(cooldown / 60)} minutes, and ${Math.floor(cooldown % 60)} seconds!`);
     }
 
     //Set cooldown

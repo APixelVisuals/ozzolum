@@ -9,17 +9,17 @@ module.exports = async ({ client, imageGenerators, util, Discord, simulatedChann
     if (!location) return;
 
     //Not exploring
-    if (!player.explore.location) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You're not exploring!**`);
+    if (!player.explore.location) return util.error(_, message, "You're not exploring!", "not exploring");
 
     //Not exploring here
-    if (player.explore.location !== location.name) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You're exploring in ${client.channels.get(util.locations.find(l => l.name === player.explore.location).channel)}!**`);
+    if (player.explore.location !== location.name) return util.error(_, message, `You're exploring in ${client.channels.get(util.locations.find(l => l.name === player.explore.location).channel)}!`, "not exploring here");
 
     //No areas found
-    if (!player.explore.foundAreas.length) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You haven't explored yet!**`);
+    if (!player.explore.foundAreas.length) return util.error(_, message, "You haven't explored yet!", "no area found");
 
     //Get params
     let area = message.content.split(" ").slice(1).join(" ");
-    if (!area) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, Where would you like to go?**`);
+    if (!area) return util.error(_, message, "Where would you like to go?", "where to go");
 
     //Parse params
     area = player.explore.foundAreas.map(a => {
@@ -31,7 +31,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, simulatedChann
 
         return matches ? { area: a, matches } : null;
     }).filter(i => i).sort((a, b) => b.matches - a.matches)[0];
-    if (!area) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, You haven't found that area!**`);
+    if (!area) return util.error(_, message, "You haven't found that area!", "where to go");
 
     area = location.areas.find(a => a.name === area.area);
 
