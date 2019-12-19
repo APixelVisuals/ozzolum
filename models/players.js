@@ -138,6 +138,9 @@ module.exports = {
         type: Number,
         default: 0
     },
+    tips: {
+        seen: [String]
+    },
     stats: [{
         name: String,
         count: Number

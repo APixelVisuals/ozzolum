@@ -27,6 +27,7 @@ module.exports = class Player {
         this.foraging = this.data.foraging.toObject();
         this.fishing = this.data.fishing.toObject();
         this.ozzolites = this.data.ozzolites;
+        this.tips = this.data.tips.toObject();
         this.stats = this.data.stats;
     }
 
@@ -114,6 +115,7 @@ module.exports = class Player {
         this.data.foraging = this.foraging;
         this.data.fishing = this.fishing;
         this.data.ozzolites = this.ozzolites;
+        this.data.tips = this.tips;
         this.data.stats = this.stats;
 
         //Return
