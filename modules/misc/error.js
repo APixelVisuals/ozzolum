@@ -5,7 +5,7 @@ module.exports = ({ client, util }, message, error, tipName) => {
 
     //Get tip
     let tip = "";
-    if ((tipName) && (!player.tips.seen.includes(tipName))) {
+    if ((tipName) && (!player.tips.disabled) && (!player.tips.seen.includes(tipName))) {
 
         tip = `\n\n${{
 

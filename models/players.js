@@ -139,6 +139,7 @@ module.exports = {
         default: 0
     },
     tips: {
+        disabled: Boolean,
         seen: [String]
     },
     stats: [{

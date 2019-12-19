@@ -121,6 +121,13 @@ module.exports = [
         usage: "forage",
     },
     {
+        file: "tips",
+        name: "Tips",
+        inputs: ["tips"],
+        type: "basic",
+        usage: "tips <Enable | Disable>",
+    },
+    {
         file: "resetTips",
         name: "Reset Tips",
         inputs: ["resettips", "tipsreset"],
