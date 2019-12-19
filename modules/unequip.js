@@ -33,7 +33,7 @@ module.exports = async ({ client, util, _ }, message) => {
     const item = player[type].tool;
 
     //Add to inv
-    const dropped = player.inv.addItems(item);
+    const { dropped } = player.inv.addItems(item);
     if (dropped.length) return message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, Your inventory is full!**`);
 
     //Unequip
