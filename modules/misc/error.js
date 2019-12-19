@@ -1,5 +1,6 @@
 module.exports = ({ client, util }, message, error, tipName) => {
 
+    //Get tip
     const tip = tipName ? `\n\n${{
 
         //General
@@ -28,5 +29,6 @@ module.exports = ({ client, util }, message, error, tipName) => {
         "no tool equipped": "To equip something, say `o!equip <Item>`"
     }[tipName]}` : "";
 
+    //Send message
     message.channel.send(`${client.ozzolumEmojis["cross"]}  **|  ${message.author}, ${error}${tip}**`);
 };
