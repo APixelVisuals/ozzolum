@@ -36,6 +36,7 @@ module.exports = async ({ client, imageGenerators, util, Discord, simulatedChann
     //Embed
     const embed = new Discord.RichEmbed()
         .setAuthor(`${message.author.tag}: ${location.name} Exploration`, message.author.displayAvatarURL)
+        .setDescription("Choose an area to go to by saying `o!go <Area>`")
         .setColor(await util.getColor(_, message.author.displayAvatarURL))
         .setImage("https://ozzolum.apixel.me/static/loading.gif");
 

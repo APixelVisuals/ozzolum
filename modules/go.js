@@ -43,6 +43,12 @@ module.exports = async ({ client, imageGenerators, util, Discord, simulatedChann
     //Embed
     const embed = new Discord.RichEmbed()
         .setAuthor(`${message.author.tag}: ${location.name} Exploration`, message.author.displayAvatarURL)
+        .setDescription(`Start gathering by saying \`o!${{
+            chopping: "chop",
+            mining: "mine",
+            digging: "dig",
+            foraging: "forage"
+        }[area.type]}\``)
         .setColor(await util.getColor(_, message.author.displayAvatarURL))
         .setImage("https://ozzolum.apixel.me/static/loading.gif");
 
