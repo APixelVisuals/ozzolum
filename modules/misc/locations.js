@@ -19,6 +19,15 @@
  *          frequency: The % chance that the player will get any amount of this item
  *          min: The base minimum amount of this item that the player can get
  *          max: The base maximum amount of this item that the player can get
+ *  enemies: Enemies you can find when exploring
+ *      name: The enemy name
+ *      chances: The chances that the player will find this enemy
+ *      health: How much health this enemy has
+ *      loot:
+ *          name: The item name
+ *          frequency: The % chance that the player will get any amount of this item
+ *          min: The base minimum amount of this item that the player can get
+ *          max: The base maximum amount of this item that the player can get
 */
 
 module.exports = [
@@ -130,6 +139,53 @@ module.exports = [
                     }
                 ]
             }
+        ],
+        enemies: [
+            {
+                name: "Slime",
+                chances: 100,
+                health: 50,
+                loot: [
+                    {
+                        name: "Slime",
+                        frequency: 100,
+                        min: 4,
+                        max: 8
+                    }
+                ]
+            },
+            {
+                name: "Goblin",
+                chances: 100,
+                health: 100,
+                loot: [
+                    {
+                        name: "Monster Flesh",
+                        frequency: 100,
+                        min: 5,
+                        max: 9
+                    }
+                ]
+            },
+            {
+                name: "Ent",
+                chances: 70,
+                health: 100,
+                loot: [
+                    {
+                        name: "Oak Log",
+                        frequency: 100,
+                        min: 8,
+                        max: 13
+                    },
+                    {
+                        name: "Stick",
+                        frequency: 100,
+                        min: 7,
+                        max: 16
+                    }
+                ]
+            }
         ]
     },
     {
@@ -210,6 +266,53 @@ module.exports = [
                         frequency: 100,
                         min: 2,
                         max: 7
+                    }
+                ]
+            }
+        ],
+        enemies: [
+            {
+                name: "Cave Slime",
+                chances: 100,
+                health: 65,
+                loot: [
+                    {
+                        name: "Slime",
+                        frequency: 100,
+                        min: 5,
+                        max: 9
+                    }
+                ]
+            },
+            {
+                name: "Stone Golem",
+                chances: 100,
+                health: 115,
+                loot: [
+                    {
+                        name: "Stone",
+                        frequency: 100,
+                        min: 8,
+                        max: 13
+                    },
+                    {
+                        name: "Pebble",
+                        frequency: 100,
+                        min: 7,
+                        max: 16
+                    }
+                ]
+            },
+            {
+                name: "Bats",
+                chances: 75,
+                health: 50,
+                loot: [
+                    {
+                        name: "Bat Wings",
+                        frequency: 100,
+                        min: 4,
+                        max: 8
                     }
                 ]
             }
