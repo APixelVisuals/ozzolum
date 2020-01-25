@@ -19,7 +19,21 @@ module.exports = async ({ client, imageGenerators, util, Discord, simulatedChann
 
     //Get params
     let area = message.content.split(" ").slice(1).join(" ");
-    if (!area) return util.error(_, message, "Where would you like to go?", "where to go");
+    if (!area) {
+
+        //Embed
+        const embed = new Discord.RichEmbed()
+            .setAuthor(`${message.author.tag}: ${location.name} Exploration`, message.author.displayAvatarURL)
+            .setDescription("Choose an area to go to by saying `o!go <Area>`")
+            .setColor(await util.getColor(_, message.author.displayAvatarURL))
+            .setImage("https://ozzolum.apixel.me/static/loading.gif");
+
+        //Send
+        const noAreaM = await message.channel.send(embed);
+
+        //Generate exploring image
+        return noAreaM.edit(embed.setImage(await imageGenerators.exploring(_, message.author, location, player.explore.foundAreas.map(a => location.areas.find(aa => aa.name === a)))));
+    }
 
     //Parse params
     area = player.explore.foundAreas.map(a => {
