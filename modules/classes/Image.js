@@ -176,7 +176,7 @@ module.exports = class Image {
         this.image.composite(this.compositions);
 
         //Render
-        return await util.uploadImage(_, await this.image.toBuffer());
+        return await util.uploadImage(_, await this.image.jpeg().toBuffer());
     }
 
 };
