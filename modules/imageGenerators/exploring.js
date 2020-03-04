@@ -64,7 +64,7 @@ module.exports = async ({ classes, _ }, user, location, areas) => {
         image.composite({
             width: 155,
             height: 155,
-            background: colors.itemSlotBG
+            background: colors.accentBG
         }, x + 10, y + 10);
 
         //Add primary loot item

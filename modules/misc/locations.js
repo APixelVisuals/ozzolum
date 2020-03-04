@@ -3,8 +3,8 @@
  *  channel: The channel ID of the location
  *  imageColors:
  *      accent: The accent color
+ *      accentBG: The accent background color
  *      progressBarFill: The color of progress bar fills
- *      itemSlotBG: The background color of item slots
  *      droppedItemSlotBG: The background color of item slots for dropped items
  *      droppedItemSlotBorder: The border color of item slots for dropped items
  *      whiteText?: Whether or not the text color should be white
@@ -40,8 +40,8 @@ module.exports = [
         channel: "648803120830480384",
         imageColors: {
             accent: "#8baf70",
+            accentBG: "#3f6040",
             progressBarFill: "#d0efb1",
-            itemSlotBG: "#3f6040",
             droppedItemSlotBG: "#7e402b",
             droppedItemSlotBorder: "#e03131",
             whiteText: true
@@ -193,8 +193,8 @@ module.exports = [
         channel: "648804143196274700",
         imageColors: {
             accent: "#676767",
+            accentBG: "#323232",
             progressBarFill: "#9f9f9f",
-            itemSlotBG: "#323232",
             droppedItemSlotBG: "#763a3a",
             droppedItemSlotBorder: "#f14545",
             whiteText: true
