@@ -146,12 +146,40 @@ module.exports = class Image {
         }
     }
 
-    async progressBar({ width, height, amount, maxAmount, color, x, y }) {
+    async progressBar({ width, height, amount, maxAmount, bgColor, borderColor, fillColor, x, y }) {
 
         //Add progress bar
         if (amount) this.composite(Buffer.from(
             `<svg>
-                <rect width="${((amount / maxAmount) * width)}" height="${height}" rx="${height / 2}" ry="${height / 2}" fill="${color}" />
+
+                <rect
+                    width="${width}"
+                    height="${height}"
+                    rx="${height / 2}"
+                    ry="${height / 2}"
+                    fill="${borderColor}"
+                />
+
+                <rect
+                    x="7"
+                    y="7"
+                    width="${width - 14}"
+                    height="${height - 14}"
+                    rx="${height / 2}"
+                    ry="${height / 2}"
+                    fill="${bgColor}"
+                />
+
+                <rect
+                    x="7"
+                    y="7"
+                    width="${((amount / maxAmount) * (width - 14))}"
+                    height="${height - 14}"
+                    rx="${height / 2}"
+                    ry="${height / 2}"
+                    fill="${fillColor}"
+                />
+
             </svg>`
         ), x, y);
     }

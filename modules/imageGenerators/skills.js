@@ -58,11 +58,13 @@ module.exports = async ({ classes, _ }, user, skillData) => {
 
         //Add xp bar
         image.progressBar({
-            width: 721,
-            height: 31,
+            width: 735,
+            height: 45,
             amount: s.xp,
             maxAmount: (s.level * 50) + 50,
-            color: "#a0694b",
+            bgColor: "#563424",
+            borderColor: "#7b4b35",
+            fillColor: "#a0694b",
             x: 173 + OFFSET_X,
             y: 547 + OFFSET_Y
         });

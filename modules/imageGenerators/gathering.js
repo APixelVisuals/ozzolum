@@ -47,13 +47,15 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
 
     //Add durability bar
     image.progressBar({
-        width: 924,
-        height: 40,
+        width: 938,
+        height: 54,
         amount: durability.amount,
         maxAmount: durability.maxAmount,
-        color: colors.progressBarFill,
-        x: 579,
-        y: 611
+        bgColor: colors.accentBG,
+        borderColor: colors.accent,
+        fillColor: colors.progressBarFill,
+        x: 572,
+        y: 604
     });
 
     //Add skill

@@ -37,11 +37,13 @@ module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slot
 
     //Add slots used bar
     image.progressBar({
-        width: 924,
-        height: 40,
+        width: 938,
+        height: 54,
         amount: slots.used,
         maxAmount: slots.total,
-        color: colors.slotsUsedBar,
+        bgColor: colors.slotsUsedBarBG,
+        borderColor: colors.accent,
+        fillColor: colors.slotsUsedBarFill,
         x: 498,
         y: 510
     });

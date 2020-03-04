@@ -34,11 +34,13 @@ module.exports = async ({ classes, _ }, user, playerData) => {
 
     //Add health bar
     image.progressBar({
-        width: 721,
-        height: 31,
+        width: 735,
+        height: 45,
         amount: playerData.health,
         maxAmount: playerData.maxHealth,
-        color: "#c62727",
+        bgColor: "#6c1313",
+        borderColor: "#7b4b35",
+        fillColor: "#c62727",
         x: 600,
         y: 442
     });
@@ -67,11 +69,13 @@ module.exports = async ({ classes, _ }, user, playerData) => {
 
     //Add fighting xp bar
     image.progressBar({
-        width: 721,
-        height: 31,
+        width: 735,
+        height: 45,
         amount: playerData.fighting.xp,
         maxAmount: (playerData.fighting.level * 50) + 50,
-        color: "#a0694b",
+        bgColor: "#563424",
+        borderColor: "#7b4b35",
+        fillColor: "#a0694b",
         x: 600,
         y: 710
     });
