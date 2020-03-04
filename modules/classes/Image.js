@@ -115,29 +115,32 @@ module.exports = class Image {
         this.composite(nameText.image, x + 87 - (nameText.width / 2), y + 175 + 15);
 
         //Add amount
-        const amountText = this.text({
-            text: amount,
-            font: "Roboto/Medium.ttf",
-            fontSize: 35,
-            color: whiteText ? "#ffffff" : "#000000"
-        });
+        if (amount) {
 
-        const amountX = x + (175 - (amountText.width / 2));
-        const amountY = y - 8;
+            const amountText = this.text({
+                text: amount,
+                font: "Roboto/Medium.ttf",
+                fontSize: 35,
+                color: whiteText ? "#ffffff" : "#000000"
+            });
 
-        this.composite({
-            width: amountText.width + 36,
-            height: amountText.height + 36,
-            background: borderColor
-        }, amountX - 18, amountY - 18);
+            const amountX = x + (175 - (amountText.width / 2));
+            const amountY = y - 8;
 
-        this.composite({
-            width: amountText.width + 20,
-            height: amountText.height + 20,
-            background: bgColor
-        }, amountX - 10, amountY - 10);
+            this.composite({
+                width: amountText.width + 36,
+                height: amountText.height + 36,
+                background: borderColor
+            }, amountX - 18, amountY - 18);
 
-        this.composite(amountText.image, amountX, amountY);
+            this.composite({
+                width: amountText.width + 20,
+                height: amountText.height + 20,
+                background: bgColor
+            }, amountX - 10, amountY - 10);
+
+            this.composite(amountText.image, amountX, amountY);
+        }
     }
 
     async progressBar({ width, height, amount, maxAmount, color, x, y }) {
