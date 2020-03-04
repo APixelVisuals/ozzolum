@@ -79,7 +79,7 @@ module.exports = class Image {
         ), x, y);
     }
 
-    item({ item, amount, bgColor, borderColor, x, y, whiteText, noSlots }) {
+    item({ item, amount, bgColor, borderColor, x, y, whiteText, noSlots, noItemName }) {
 
         //Get utils
         const { util } = this._;
@@ -104,15 +104,18 @@ module.exports = class Image {
         this.composite(`assets/items/128x128/${item}.png`, x + 23, y + 23);
 
         //Add item name
-        const itemData = util.items.find(i => i.name === item);
-        const nameText = this.text({
-            text: itemData.imageName || item,
-            font: "Roboto/Medium.ttf",
-            fontSize: itemData.imageFontSize || 35,
-            color: whiteText ? "#ffffff" : "#000000"
-        });
+        if (!noItemName) {
 
-        this.composite(nameText.image, x + 87 - (nameText.width / 2), y + 175 + 15);
+            const itemData = util.items.find(i => i.name === item);
+            const nameText = this.text({
+                text: itemData.imageName || item,
+                font: "Roboto/Medium.ttf",
+                fontSize: itemData.imageFontSize || 35,
+                color: whiteText ? "#ffffff" : "#000000"
+            });
+
+            this.composite(nameText.image, x + 87 - (nameText.width / 2), y + 175 + 15);
+        }
 
         //Add amount
         if (amount) {
