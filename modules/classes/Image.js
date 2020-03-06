@@ -149,7 +149,7 @@ module.exports = class Image {
     progressBar({ width, height, amount, maxAmount, bgColor, borderColor, fillColor, x, y }) {
 
         //Add progress bar
-        if (amount) this.composite(Buffer.from(
+        this.composite(Buffer.from(
             `<svg>
 
                 <rect
