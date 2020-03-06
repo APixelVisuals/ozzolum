@@ -114,8 +114,7 @@ module.exports = async ({ classes, _ }, user, location, skill, loot, xpGain) => 
         const x = (960 - ((((rowLength - 1) * 275) + 175) / 2)) + (275 * rowIndex);
 
         //Get y
-        let y = 900;
-        if (index > 4) y = y + 320;
+        const y = 900 + (Math.ceil(((index + 1) / 5) - 1) * 320);
 
         //Add item
         image.item({
