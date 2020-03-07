@@ -49,6 +49,7 @@ module.exports = [
         type: "Storage Unit",
         tags: ["backpack", "bag"],
         inventoryImageColors: {
+            background: "#b57a53",
             accent: "#7b4b35",
             accentBG: "#9a613c",
             slotsUsedBarBG: "#563424",
@@ -60,6 +61,7 @@ module.exports = [
         type: "Storage Unit",
         tags: [],
         inventoryImageColors: {
+            background: "#ababab",
             accent: "#777777",
             accentBG: "#999999",
             slotsUsedBarBG: "#464646",

@@ -1,10 +1,17 @@
 module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slots, error) => {
 
-    //Create image
-    const image = new classes.Image(_, `assets/backgrounds/storageUnits/${storageUnitName}${items.length > 5 ? "2" : ""}.png`);
-
     //Get colors
     const colors = util.items.find(i => i.name === storageUnitName).inventoryImageColors;
+
+    //Create image
+    const image = new classes.Image(_, {
+        width: 1920,
+        height: items.length <= 5 ? 1120 : 1396,
+        backgroundColor: colors.background,
+        accentColor: colors.accent,
+        details: `storageUnits/${storageUnitName}`,
+        noDetailOffset: true
+    });
 
     //Add avatar
     await image.compositeAvatar({
@@ -48,6 +55,16 @@ module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slot
         y: 510
     });
 
+    //Add "items" text
+    image.text({
+        text: "Items",
+        font: "Roboto/Medium.ttf",
+        fontSize: 45,
+        color: colors.accent,
+        x: 520,
+        y: 452
+    });
+
     //Add slots used percent
     const slotsUsedPercent = image.text({
         text: `${Math.round((slots.used / slots.total) * 100)}% Full`,
@@ -57,6 +74,16 @@ module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slot
     });
 
     image.composite(slotsUsedPercent.image, (1414 - slotsUsedPercent.width), 452);
+
+    //Add storage unit name
+    image.text({
+        text: storageUnitName,
+        font: "Roboto/Medium.ttf",
+        fontSize: 35,
+        color: colors.accent,
+        x: 519,
+        y: 575
+    });
 
     //Add slots used
     const slotsUsed = image.text({

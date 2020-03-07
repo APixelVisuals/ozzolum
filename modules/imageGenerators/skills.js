@@ -1,7 +1,13 @@
 module.exports = async ({ classes, _ }, user, skillData) => {
 
     //Create image
-    const image = new classes.Image(_, `assets/skillsBG${skillData.length}.png`);
+    const image = new classes.Image(_, {
+        width: 1920,
+        height: 500 + (Math.ceil(skillData.length / 2) * 220),
+        backgroundColor: "#b57a53",
+        accentColor: "#7b4b35",
+        details: "skills"
+    });
 
     //Add username + discriminator
     const username = image.text({

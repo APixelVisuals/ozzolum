@@ -1,7 +1,21 @@
 module.exports = async ({ classes, _ }, user, playerData) => {
 
     //Create image
-    const image = new classes.Image(_, "assets/profileBG.png");
+    const image = new classes.Image(_, {
+        width: 1920,
+        height: 1080,
+        backgroundColor: "#b57a53",
+        accentColor: "#7b4b35",
+        details: "profile"
+    });
+
+    //Add avatar border
+    await image.circle({
+        diameter: 226,
+        color: "#7b4b35",
+        x: 332,
+        y: 277
+    });
 
     //Add avatar
     await image.compositeAvatar({
@@ -41,8 +55,8 @@ module.exports = async ({ classes, _ }, user, playerData) => {
         bgColor: "#6c1313",
         borderColor: "#7b4b35",
         fillColor: "#c62727",
-        x: 600,
-        y: 442
+        x: 593,
+        y: 435
     });
 
     //Add health
@@ -56,6 +70,9 @@ module.exports = async ({ classes, _ }, user, playerData) => {
     image.composite(health.image, (1301 - health.width), 498);
 
     image.composite("assets/misc/heart.png", (1301 - health.width) - 32 - 10, 494);
+
+    //Add sword icon
+    image.composite("assets/misc/sword.png", 504, 687);
 
     //Add fighting level
     const fightingLevel = image.text({
@@ -76,8 +93,8 @@ module.exports = async ({ classes, _ }, user, playerData) => {
         bgColor: "#563424",
         borderColor: "#7b4b35",
         fillColor: "#a0694b",
-        x: 600,
-        y: 710
+        x: 593,
+        y: 703
     });
 
     //Add fighting xp

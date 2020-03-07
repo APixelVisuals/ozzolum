@@ -9,8 +9,36 @@ module.exports = class Image {
 
         //Set data
         this._ = _;
-        this.image = sharp(image);
         this.compositions = [];
+
+        //Create image
+        if ((image instanceof Object) && (!(image instanceof Buffer))) {
+
+            //Parse dimensions
+            image.width = Math.round(image.width);
+            image.height = Math.round(image.height);
+
+            //Create border
+            this.image = sharp({
+                create: {
+                    width: image.width,
+                    height: image.height,
+                    background: image.accentColor,
+                    channels: 4
+                }
+            });
+
+            //Create background
+            this.composite({
+                width: image.width - 36,
+                height: image.height - 36,
+                background: image.backgroundColor
+            }, 18, 18);
+
+            //Add details
+            this.composite(`assets/details/${image.details}.png`, image.noDetailOffset ? 0 : 18, image.noDetailOffset ? 0 : 18);
+        }
+        else this.image = sharp(image);
     }
 
     async compositeAvatar({ user, width, height, x, y }) {

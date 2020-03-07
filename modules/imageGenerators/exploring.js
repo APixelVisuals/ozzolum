@@ -1,10 +1,16 @@
 module.exports = async ({ classes, _ }, user, location, areas) => {
 
-    //Create image
-    const image = new classes.Image(_, `assets/backgrounds/locations/${location.name} Exploring${areas.length > 5 ? "2" : ""}.png`);
-
     //Get colors
     const colors = location.imageColors;
+
+    //Create image
+    const image = new classes.Image(_, {
+        width: 1920,
+        height: areas.length <= 5 ? 968 : 1244,
+        backgroundColor: colors.background,
+        accentColor: colors.accent,
+        details: `locations/${location.name}`
+    });
 
     //Add username + discriminator
     const username = image.text({

@@ -1,10 +1,16 @@
 module.exports = async ({ classes, _ }, user, location, skill, loot, xpGain) => {
 
-    //Create image
-    const image = new classes.Image(_, `assets/backgrounds/locations/${location.name}${Math.ceil(loot.length / 5) <= 1 ? "" : Math.ceil(loot.length / 5)}.png`);
-
     //Get colors
     const colors = location.imageColors;
+
+    //Create image
+    const image = new classes.Image(_, {
+        width: 1920,
+        height: 931 + (Math.ceil(loot.length / 5) * 320),
+        backgroundColor: colors.background,
+        accentColor: colors.accent,
+        details: `locations/${location.name}`
+    });
 
     //Add username + discriminator
     const username = image.text({

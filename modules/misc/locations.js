@@ -2,6 +2,7 @@
  *  name: The location name
  *  channel: The channel ID of the location
  *  imageColors:
+ *      background: The background color
  *      accent: The accent color
  *      accentBG: The accent background color
  *      progressBarFill: The color of progress bar fills
@@ -39,6 +40,7 @@ module.exports = [
         name: "Forest",
         channel: "648803120830480384",
         imageColors: {
+            background: "#2c442d",
             accent: "#8baf70",
             accentBG: "#3f6040",
             progressBarFill: "#d0efb1",
@@ -192,6 +194,7 @@ module.exports = [
         name: "Mines",
         channel: "648804143196274700",
         imageColors: {
+            background: "#3b3b3b",
             accent: "#676767",
             accentBG: "#323232",
             progressBarFill: "#9f9f9f",

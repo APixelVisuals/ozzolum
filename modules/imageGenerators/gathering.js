@@ -1,10 +1,16 @@
 module.exports = async ({ classes, _ }, user, location, area, skill, durability, damage) => {
 
-    //Create image
-    const image = new classes.Image(_, `assets/backgrounds/locations/${location.name} Small.png`);
-
     //Get colors
     const colors = location.imageColors;
+
+    //Create image
+    const image = new classes.Image(_, {
+        width: 1920,
+        height: 873,
+        backgroundColor: colors.background,
+        accentColor: colors.accent,
+        details: `locations/${location.name}`
+    });
 
     //Add username + discriminator
     const username = image.text({
@@ -43,7 +49,14 @@ module.exports = async ({ classes, _ }, user, location, area, skill, durability,
     });
 
     //Add item
-    image.composite(`assets/items/128x128/${area.primaryLoot}.png`, 361, 568);
+    image.item({
+        item: area.primaryLoot,
+        bgColor: colors.accentBG,
+        borderColor: colors.accent,
+        x: 337,
+        y: 544,
+        noItemName: true
+    });
 
     //Add durability bar
     image.progressBar({
