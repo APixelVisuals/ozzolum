@@ -84,7 +84,7 @@ module.exports = async ({ util, classes, _ }, user, items, storageUnitName, slot
         image.item({
             item: i.name,
             amount: i.amount,
-            bgColor: colors.slotBG,
+            bgColor: colors.accentBG,
             borderColor: colors.accent,
             x,
             y

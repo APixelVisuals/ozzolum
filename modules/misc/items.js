@@ -50,9 +50,9 @@ module.exports = [
         tags: ["backpack", "bag"],
         inventoryImageColors: {
             accent: "#7b4b35",
+            accentBG: "#9a613c",
             slotsUsedBarBG: "#563424",
-            slotsUsedBarFill: "#a0694b",
-            slotBG: "#9a613c"
+            slotsUsedBarFill: "#a0694b"
         }
     },
     {
@@ -61,9 +61,9 @@ module.exports = [
         tags: [],
         inventoryImageColors: {
             accent: "#777777",
+            accentBG: "#999999",
             slotsUsedBarBG: "#464646",
-            slotsUsedBarFill: "#c9c9c9",
-            slotBG: "#999999"
+            slotsUsedBarFill: "#c9c9c9"
         }
     },
     {
