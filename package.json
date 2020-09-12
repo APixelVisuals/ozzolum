@@ -15,7 +15,7 @@
     "discord.js": "^11.6.4",
     "dotenv": "^8.2.0",
     "mongoose": "^5.9.7",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "node-vibrant": "^3.1.5",
     "sharp": "^0.23.4",
     "syntax-error": "^1.4.0",
